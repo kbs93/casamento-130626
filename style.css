@@ -1,0 +1,604 @@
+body {
+  margin: 0;
+  background: #ffffff;
+  font-family: 'Playfair Display', serif;
+  color: #4b3f2f;
+}
+
+/* HERO */
+.hero {
+  background: url('https://images.unsplash.com/photo-1504198266285-1659872e6590?auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.hero .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  z-index: 10;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  z-index: 10;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #6b4f33;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  z-index: 10;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #8a6a47;
+}
+
+/* INFO */
+.info, .confirmacao, .presentes {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+h2 {
+  color: #6b4f33;
+}
+
+/* FORM */
+#formPresenca input,
+#formPresenca select {
+  width: 90%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #c7b8aa;
+  font-size: 1.1rem;
+}
+
+#formPresenca button {
+  width: 50%;
+}
+
+/* ===================== CARDS DE PRESENTES (MELHORADO) ===================== */
+/* =========================
+   LISTA DE PRESENTES
+========================= */
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+  text-align: center;
+}
+
+/* efeito hover elegante */
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+/* imagem do card */
+.card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+/* zoom suave na imagem */
+.card:hover img {
+  transform: scale(1.08);
+}
+
+/* título */
+.card h3 {
+  font-size: 1.3rem;
+  color: #5c4b3b;
+  margin: 20px 16px 10px;
+  font-weight: 600;
+}
+
+/* botão presentear */
+.btn-card {
+  display: inline-block;
+  margin: 14px auto 18px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #d8b07d, #b8905c);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* hover do botão */
+.btn-card:hover {
+  background: linear-gradient(135deg, #b8905c, #9f7a47);
+  transform: scale(1.05);
+}
+
+/* status do presente */
+.card .status {
+  font-size: 0.9rem;
+  margin-bottom: 18px;
+  color: #4caf50;
+  font-weight: 500;
+}
+
+/* quando presente já foi escolhido */
+.card.selecionado {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.card.selecionado::after {
+  content: "🎁 Já escolhido";
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+}
+
+/* =========================
+   MODAIS (CONFIRMAÇÃO + PRESENTE)
+========================= */
+
+.modal {
+  display: none;
+  position: fixed;              /* 🔥 ESSENCIAL */
+  z-index: 9999;
+  inset: 0;                     /* top/right/bottom/left = 0 */
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+}
+
+/* conteúdo central do modal */
+.modal-content {
+  background: #ffffff;
+  width: 90%;
+  max-width: 420px;
+  margin: 12% auto;
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  animation: modalFade 0.35s ease;
+}
+
+/* botão fechar (X) */
+.modal .close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 26px;
+  cursor: pointer;
+  color: #999;
+}
+
+.modal .close:hover {
+  color: #000;
+}
+
+/* animação elegante */
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+.card.selecionado {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.card.selecionado::after {
+  content: "🎁 Presente escolhido";
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: rgba(0,0,0,0.75);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 14px;
+  font-size: 0.75rem;
+}
+
+
+
+/* =========================
+   GRID DE PRESENTES — FIX DEFINITIVO
+========================= */
+
+/* DESKTOP / TABLET */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 32px;
+}
+
+/* MOBILE — FORÇA 2 COLUNAS */
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
+    gap: 14px;
+    padding: 30px 12px;
+  }
+
+  .card img {
+    height: 130px;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .btn-card {
+    font-size: 0.78rem;
+    padding: 8px 12px;
+  }
+}
+
+/* MOBILE MUITO PEQUENO */
+@media (max-width: 380px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card img {
+    height: 180px;
+  }
+}
+
+
+/* =========================
+   CONTAINER PADRÃO
+========================= */
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* =========================
+   INFO (DATA + SOBRE)
+========================= */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+}
+
+.info-bloco {
+  text-align: center;
+}
+
+.info-bloco h2 {
+  margin-bottom: 12px;
+}
+
+/* =========================
+   NOSSA HISTÓRIA (GRID)
+========================= */
+
+.historia-lista {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 🔥 2 colunas */
+  gap: 32px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* cards */
+.historia-item {
+  background: #fff;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* centraliza o último card se ficar ímpar */
+.historia-item:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+  max-width: 500px;
+  justify-self: center;
+}
+
+/* título */
+.historia h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .historia-lista {
+    grid-template-columns: 1fr; /* 🔥 1 coluna no mobile */
+  }
+
+  .historia-item:last-child {
+    grid-column: auto;
+    max-width: 100%;
+  }
+}
+
+
+/* =========================
+   INFORMAÇÕES BÁSICAS
+========================= */
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.info-card {
+  background: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+
+
+
+
+
+
+/* =========================
+   LOCALIZAÇÃO / MAPA
+========================= */
+
+.mapa {
+  text-align: center;
+}
+
+.mapa h2 {
+  margin-bottom: 12px;
+}
+
+.mapa-desc {
+  color: #6f5b45;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* card do mapa */
+.mapa-card {
+  max-width: 900px;
+  margin: auto;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  background: #fff;
+}
+
+/* mapa em si */
+.mapa-card iframe {
+  width: 100%;
+  height: 320px; /* 🔥 menor e mais elegante */
+  border: none;
+  filter: saturate(0.9) contrast(0.95); /* suaviza cores */
+}
+
+/* mobile */
+@media (max-width: 768px) {
+  .mapa-card iframe {
+    height: 260px;
+  }
+}
+
+
+
+
+/* =========================
+   TIPOGRAFIA GLOBAL
+========================= */
+
+/* Texto geral */
+body {
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.7;
+  color: #4a3f35;
+}
+
+/* Títulos principais */
+h1, h2, h3 {
+  font-family: 'Playfair Display', serif;
+  color: #5c4b3b;
+  letter-spacing: 0.5px;
+}
+
+/* Hero */
+.hero h1 {
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+  font-weight: 600;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* Seções */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+}
+
+/* Subtítulos */
+h3 {
+  font-size: 1.3rem;
+}
+
+/* Parágrafos */
+p {
+  font-size: 0.95rem;
+}
+
+/* Botões */
+.btn,
+.btn-card {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.4px;
+}
+
+
+
+
+/* =========================
+   CONTAGEM REGRESSIVA
+========================= */
+
+.contador {
+  text-align: center;
+}
+
+.contador h2 {
+  margin-bottom: 30px;
+}
+
+.contador-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.tempo {
+  background: #ffffff;
+  padding: 20px 18px;
+  min-width: 90px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.tempo span {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  color: #5c4b3b;
+}
+
+.tempo small {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #8c7a66;
+}
+
+.contador-msg {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #6f5b45;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .tempo {
+    min-width: 70px;
+    padding: 14px 10px;
+  }
+
+  .tempo span {
+    font-size: 1.6rem;
+  }
+}
+
+
+
+/* =========================
+   CONTAGEM REGRESSIVA — MOBILE 4 ITENS
+========================= */
+
+/* Desktop continua normal */
+.contador-box {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Mobile: 4 blocos em 1 linha */
+@media (max-width: 600px) {
+  .contador-box {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 🔥 4 em linha */
+    gap: 10px;
+    max-width: 100%;
+    padding: 0 10px;
+  }
+
+  .tempo {
+    padding: 10px 6px;
+    border-radius: 14px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  }
+
+  .tempo span {
+    font-size: 1.15rem;        /* número menor */
+    line-height: 1.1;
+  }
+
+  .tempo small {
+    font-size: 0.55rem;        /* texto compacto */
+    letter-spacing: 0.6px;
+  }
+}
+
+/* Mobile muito estreito (segurança) */
+@media (max-width: 360px) {
+  .tempo span {
+    font-size: 1rem;
+  }
+
+  .tempo small {
+    font-size: 0.5rem;
+  }
+}
