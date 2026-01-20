@@ -198,3 +198,59 @@ setInterval(atualizarContador, 1000);
 atualizarContador();
 
 
+
+
+
+// =========================
+// CONFIRMAÇÃO VISUAL DE PRESENÇA (RSVP)
+// =========================
+
+// =========================
+// CONFIRMAÇÃO VISUAL DE PRESENÇA (RSVP) — BLINDADO
+// =========================
+
+document.getElementById("formPresenca")?.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const nome = document.getElementById("nome")?.value.trim();
+  const confirmacao = document.getElementById("confirmacaoSelect")?.value;
+
+  const visual = document.getElementById("confirmacaoVisual");
+  const cardSucesso = visual?.querySelector(".confirmacao-card.sucesso");
+  const cardNegativo = visual?.querySelector(".confirmacao-card.negativo");
+  const textoSucesso = document.getElementById("textoSucesso");
+  const textoNegativo = document.getElementById("textoNegativo");
+
+  // 🔥 Se algo essencial não existir, aborta com segurança
+  if (!visual || !cardSucesso || !cardNegativo) return;
+
+  // reset visual
+  visual.classList.remove("hidden");
+  cardSucesso.style.display = "none";
+  cardNegativo.style.display = "none";
+
+  if (confirmacao === "sim") {
+    cardSucesso.style.display = "block";
+    if (textoSucesso) {
+      textoSucesso.innerHTML =
+        `<strong>${nome}</strong>, ficamos muito felizes com sua presença! 💖`;
+    }
+  } 
+  else if (confirmacao === "nao") {
+    cardNegativo.style.display = "block";
+    if (textoNegativo) {
+      textoNegativo.innerHTML =
+        `<strong>${nome}</strong>, entendemos e agradecemos o carinho. 💕`;
+    }
+  }
+
+  this.reset();
+});
+
+
+
+
+
+
+
+

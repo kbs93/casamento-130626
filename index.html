@@ -19,16 +19,20 @@
 <body>
 
     <!-- HERO -->
+    
     <header class="hero">
+         
         <div class="overlay"></div>
         <h1>Ana1 & João</h1>
         <p>Vão se casar</p>
+         
         <a href="#confirmacao" class="btn">Confirmar presença</a>
+     <p class="sentir">  O sentir é particular</p> 
     </header>
-
+    
+<section class="historia container section-soft">
 <section class="contador container">
-  <h2>⏳ Contagem regressiva</h2>
-
+<h2> Contagem regressiva</h2>
   <div class="contador-box">
     <div class="tempo">
       <span id="dias">0</span>
@@ -52,74 +56,82 @@
     para o grande dia 💖
   </p>
 </section>
-
-
-
+</section>
+<!-------ANIMAÇÃO ------->
     
-
     <!-- INFORMAÇÕES -->
 <section class="info container">
   <div class="info-grid">
     <div class="info-bloco">
-      <h2>📅 Data & Local</h2>
-      <p><strong>12 de Dezembro de 2026</strong></p>
-      <p>Chácara Bela Vista – Brasília, DF</p>
-    </div>
-
-    <div class="info-bloco">
-      <h2>❤️ Sobre nós</h2>
+      <h2> Sobre nós</h2>
       <p>
         É com muita alegria que convidamos você para celebrar nosso casamento.
         Será um momento único que queremos dividir com as pessoas mais importantes.
       </p>
     </div>
+     <div class="info-bloco">
+      <h2> Data & Local</h2>
+      <p><strong>12 de Dezembro de 2026</strong></p>
+      <p>Chácara Bela Vista – Samambaia Norte, DF</p>
+    </div>
   </div>
 </section>
 
+<div class="hearts-confetti">
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+  <span>❤</span>
+
+</div>
+
+
+
+    
 
 <!-- NOSSA HISTÓRIA -->
-    
+    <section class="historia container section-soft">
 <section class="historia container" id="historia">
-  <h2>💞 Nossa História</h2>
-
+  <h2>Nossa História</h2>
   <div class="historia-lista">
-
     <div class="historia-item">
       <h3>🌿 Como nos conhecemos</h3>
       <p>
-        Tudo começou de forma inesperada, em um dia comum que acabou
-        se tornando extraordinário. Desde o primeiro olhar, algo especial
-        aconteceu e nossos caminhos se cruzaram para sempre.
+        Em 2022, nossos caminhos se cruzaram no trabalho. 
+        Entre conversas, risadas e uma amizade sincera, nasceu um sentimento que cresceu aos poucos.
+        Entre concretagens e fechamento de folhas, aprendemos que o amor surge quando menos se espera 
+        — e floresce nos detalhes do dia a dia.
       </p>
     </div>
 
     <div class="historia-item">
       <h3>💍 O pedido de casamento</h3>
       <p>
-        Entre risos, histórias e muito amor, veio o grande momento!
-        Um pedido cheio de emoção, carinho e brilho nos olhos.
-        Foi o início oficial da nossa nova jornada.
+     O pedido de casamento aconteceu em uma semana cheia de significado para nós, na nossa noite do casal. 
+        Com muita felicidade, carinho e criatividade, dissemos “sim” a uma história de amor que já estava sendo escrita há tempos.
       </p>
     </div>
 
     <div class="historia-item">
       <h3>❤️ Hoje</h3>
       <p>
-        Com o coração cheio de gratidão, estamos prontos para começar
-        o próximo capítulo das nossas vidas ao lado de quem amamos.
-        É por isso que queremos você conosco nesse grande dia.
+     Hoje seguimos prontos para viver novos começos e construir nossa história, 
+        juntos da nossa filha Chloe e dos nossos filhos de quatro patas, que completam nossa família: Pipoca, Juju e Athena.
       </p>
     </div>
 
   </div>
 </section>
-
+    </section>
 <!-- INFORMAÇÕES BÁSICAS -->
 
 <!-- MAPA DO LOCAL -->
 <section class="mapa container" id="mapa">
   <h2>📍 Local do Casamento</h2>
-
   <p class="mapa-desc">
     Chácara Bela Vista – Brasília, DF  
     <br>
@@ -138,9 +150,7 @@
 
 <section class="info-basica container" id="informacoes">
   <h2>📌 Informações Básicas</h2>
-
   <div class="info-cards">
-
     <div class="info-card">
       <h3>🌿 O que fazer</h3>
       <ul>
@@ -167,30 +177,53 @@
 </section>
 
 
-    <!-- CONFIRMAÇÃO DE PRESENÇA -->
-    <section class="confirmacao" id="confirmacao">
-        <h2>✉️ Confirme sua presença</h2>
+<!-- CONFIRMAÇÃO DE PRESENÇA -->
+<section class="confirmacao container section-soft" id="confirmacao">
 
-   <form id="formPresenca">
+  <h2>✉️ Confirme sua presença</h2>
+
+  <form id="formPresenca">
     <input type="text" id="nome" placeholder="Seu nome" required>
 
     <input 
-    type="tel" 
-    id="telefone" 
-    placeholder="(61) 99999-9999" 
-    maxlength="15" 
-    required>
+      type="tel" 
+      id="telefone" 
+      placeholder="(61) 99999-9999" 
+      maxlength="15" 
+      required>
 
-
-    <select id="confirmacaoSelect">
-        <option value="sim">Confirmo presença</option>
-        <option value="nao">Não poderei ir</option>
+    <select id="confirmacaoSelect" required>
+      <option value="sim">Confirmo presença</option>
+      <option value="nao">Não poderei ir</option>
     </select>
 
     <button type="submit" class="btn">Enviar</button>
-</form>
-        <p id="msgConfirmacao"></p>
-    </section>
+  </form>
+
+  <!-- CONFIRMAÇÃO VISUAL -->
+  <div id="confirmacaoVisual" class="confirmacao-visual hidden">
+
+    <div class="confirmacao-card sucesso">
+      <div class="icon">🎉</div>
+      <h3>Presença confirmada!</h3>
+      <p id="textoSucesso"></p>
+    </div>
+
+    <div class="confirmacao-card negativo">
+      <div class="icon">💌</div>
+      <h3>Sentiremos sua falta</h3>
+      <p id="textoNegativo"></p>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+    
     <!-- LISTA DE PRESENTES -->
     
     <h2 style="text-align: center"> Lista de presentes</h2>
@@ -252,10 +285,6 @@
 
 
 
-
-
-
-
     <!-- MODAL DE CONFIRMAÇÃO -->
 <div id="modalConfirmar" class="modal">
     <div class="modal-content">
@@ -269,6 +298,10 @@
     </div>
 </div>
 
+
+
+    
+    
 <!-- MODAL DE PRESENTE -->
 <div id="modalPresente" class="modal">
     <div class="modal-content">
