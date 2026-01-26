@@ -19,20 +19,16 @@
 <body>
 
     <!-- HERO -->
-    
     <header class="hero">
-         
         <div class="overlay"></div>
         <h1>Ana1 & João</h1>
         <p>Vão se casar</p>
-         
         <a href="#confirmacao" class="btn">Confirmar presença</a>
-     <p class="sentir">  O sentir é particular</p> 
     </header>
-    
-<section class="historia container section-soft">
+
 <section class="contador container">
-<h2> Contagem regressiva</h2>
+  <h2>⏳ Contagem regressiva</h2>
+
   <div class="contador-box">
     <div class="tempo">
       <span id="dias">0</span>
@@ -56,82 +52,74 @@
     para o grande dia 💖
   </p>
 </section>
-</section>
-<!-------ANIMAÇÃO ------->
+
+
+
     
+
     <!-- INFORMAÇÕES -->
 <section class="info container">
   <div class="info-grid">
     <div class="info-bloco">
-      <h2> Sobre nós</h2>
+      <h2>📅 Data & Local</h2>
+      <p><strong>12 de Dezembro de 2026</strong></p>
+      <p>Chácara Bela Vista – Brasília, DF</p>
+    </div>
+
+    <div class="info-bloco">
+      <h2>❤️ Sobre nós</h2>
       <p>
         É com muita alegria que convidamos você para celebrar nosso casamento.
         Será um momento único que queremos dividir com as pessoas mais importantes.
       </p>
     </div>
-     <div class="info-bloco">
-      <h2> Data & Local</h2>
-      <p><strong>12 de Dezembro de 2026</strong></p>
-      <p>Chácara Bela Vista – Samambaia Norte, DF</p>
-    </div>
   </div>
 </section>
 
-<div class="hearts-confetti">
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-  <span>❤</span>
-
-</div>
-
-
-
-    
 
 <!-- NOSSA HISTÓRIA -->
-    <section class="historia container section-soft">
+    
 <section class="historia container" id="historia">
-  <h2>Nossa História</h2>
+  <h2>💞 Nossa História</h2>
+
   <div class="historia-lista">
+
     <div class="historia-item">
       <h3>🌿 Como nos conhecemos</h3>
       <p>
-        Em 2022, nossos caminhos se cruzaram no trabalho. 
-        Entre conversas, risadas e uma amizade sincera, nasceu um sentimento que cresceu aos poucos.
-        Entre concretagens e fechamento de folhas, aprendemos que o amor surge quando menos se espera 
-        — e floresce nos detalhes do dia a dia.
+        Tudo começou de forma inesperada, em um dia comum que acabou
+        se tornando extraordinário. Desde o primeiro olhar, algo especial
+        aconteceu e nossos caminhos se cruzaram para sempre.
       </p>
     </div>
 
     <div class="historia-item">
       <h3>💍 O pedido de casamento</h3>
       <p>
-     O pedido de casamento aconteceu em uma semana cheia de significado para nós, na nossa noite do casal. 
-        Com muita felicidade, carinho e criatividade, dissemos “sim” a uma história de amor que já estava sendo escrita há tempos.
+        Entre risos, histórias e muito amor, veio o grande momento!
+        Um pedido cheio de emoção, carinho e brilho nos olhos.
+        Foi o início oficial da nossa nova jornada.
       </p>
     </div>
 
     <div class="historia-item">
       <h3>❤️ Hoje</h3>
       <p>
-     Hoje seguimos prontos para viver novos começos e construir nossa história, 
-        juntos da nossa filha Chloe e dos nossos filhos de quatro patas, que completam nossa família: Pipoca, Juju e Athena.
+        Com o coração cheio de gratidão, estamos prontos para começar
+        o próximo capítulo das nossas vidas ao lado de quem amamos.
+        É por isso que queremos você conosco nesse grande dia.
       </p>
     </div>
 
   </div>
 </section>
-    </section>
+
 <!-- INFORMAÇÕES BÁSICAS -->
 
 <!-- MAPA DO LOCAL -->
 <section class="mapa container" id="mapa">
   <h2>📍 Local do Casamento</h2>
+
   <p class="mapa-desc">
     Chácara Bela Vista – Brasília, DF  
     <br>
@@ -150,7 +138,9 @@
 
 <section class="info-basica container" id="informacoes">
   <h2>📌 Informações Básicas</h2>
+
   <div class="info-cards">
+
     <div class="info-card">
       <h3>🌿 O que fazer</h3>
       <ul>
@@ -177,100 +167,314 @@
 </section>
 
 
-<!-- CONFIRMAÇÃO DE PRESENÇA -->
-<section class="confirmacao container section-soft" id="confirmacao">
+    <!-- CONFIRMAÇÃO DE PRESENÇA -->
+    <section class="confirmacao" id="confirmacao">
+        <h2>✉️ Confirme sua presença</h2>
 
-  <h2>✉️ Confirme sua presença</h2>
-
-  <form id="formPresenca">
+   <form id="formPresenca">
     <input type="text" id="nome" placeholder="Seu nome" required>
 
     <input 
-      type="tel" 
-      id="telefone" 
-      placeholder="(61) 99999-9999" 
-      maxlength="15" 
-      required>
+    type="tel" 
+    id="telefone" 
+    placeholder="(61) 99999-9999" 
+    maxlength="15" 
+    required>
 
-    <select id="confirmacaoSelect" required>
-      <option value="sim">Confirmo presença</option>
-      <option value="nao">Não poderei ir</option>
+
+    <select id="confirmacaoSelect">
+        <option value="sim">Confirmo presença</option>
+        <option value="nao">Não poderei ir</option>
     </select>
 
     <button type="submit" class="btn">Enviar</button>
-  </form>
-
-  <!-- CONFIRMAÇÃO VISUAL -->
-  <div id="confirmacaoVisual" class="confirmacao-visual hidden">
-
-    <div class="confirmacao-card sucesso">
-      <div class="icon">🎉</div>
-      <h3>Presença confirmada!</h3>
-      <p id="textoSucesso"></p>
-    </div>
-
-    <div class="confirmacao-card negativo">
-      <div class="icon">💌</div>
-      <h3>Sentiremos sua falta</h3>
-      <p id="textoNegativo"></p>
-    </div>
-
-  </div>
-
-</section>
-
-
-
-
-
-    
+</form>
+        <p id="msgConfirmacao"></p>
+    </section>
     <!-- LISTA DE PRESENTES -->
     
     <h2 style="text-align: center"> Lista de presentes</h2>
-   <div class="cards">
- 
-    <div class="card" id="presente-panelas">
-        <img src="https://images.unsplash.com/photo-1599058918143-130d0cc47d93?auto=format&fit=crop&w=800&q=80">
-        <h3>Jogo de Panelas</h3>
-        <button onclick="presentear('Jogo de Panelas', 'presente-panelas')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
 
-    <div class="card" id="presente-toalhas">
-        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=800&q=80">
-        <h3>Conjunto de Toalhas</h3>
-        <button onclick="presentear('Conjunto de Toalhas', 'presente-toalhas')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
 
-    <div class="card" id="presente-jantar">
-        <img src="https://images.unsplash.com/photo-1505692794403-34cb4be5e9c5?auto=format&fit=crop&w=800&q=80">
-        <h3>Jantar Romântico</h3>
-        <button onclick="presentear('Jantar Romântico', 'presente-jantar')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
-           <div class="card" id="presente-panelas">
-        <img src="https://images.unsplash.com/photo-1599058918143-130d0cc47d93?auto=format&fit=crop&w=800&q=80">
-        <h3>Jogo de Panelas</h3>
-        <button onclick="presentear('Jogo de Panelas', 'presente-panelas')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
+<div class="cards">
 
-    <div class="card" id="presente-toalhas">
-        <img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=800&q=80">
-        <h3>Conjunto de Toalhas</h3>
-        <button onclick="presentear('Conjunto de Toalhas', 'presente-toalhas')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
+  <div class="card">
+    <img src="./img/bebida.PNG">
+      <h3>Bebida</h3>
+        <p class="descricao">
+          Bebida pro noivo colocar na adega.</p>
+        <p class="valor">R$ 400,00</p>
+          <button onclick="presentear('com uma bebida')" class="btn-card">
+          Presentear
+         </button>
+       <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/deus.PNG">
+         <h3>Deus tocou</h3>
+          <p class="descricao">Deus tocou no coração.</p>
+         <p class="valor">R$ 1.000,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+     <div class="card">
+        <img src="./img/julio.PNG">
+         <h3>Eu ajudei</h3>
+          <p class="descricao">So pra dizer que nao dei nada.</p>
+         <p class="valor">R$ 50,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+      <div class="card">
+        <img src="./img/boleto.PNG">
+         <h3>Boleto</h3>
+          <p class="descricao">
+            Ajuda nos boletos do Casamento.</p>
+         <p class="valor">R$ 120,00</p>
+       <button onclick="presentear('com uma bebida')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/SAL GROSSO.PNG">
+         <h3>Sal grosso</h3>
+          <p class="descricao">Sal grosso para espantar as energias negativas.</p>
+         <p class="valor">R$ 50,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+    <img src="./img/cama.PNG">
+      <h3>Lençol</h3>
+        <p class="descricao">Lençol novo para os gatos arranharem.</p>
+        <p class="valor">R$ 80,00</p>
+          <button onclick="presentear('')" class="btn-card">Presentear</button>
+       <p class="status"></p>
+  </div>
+      <div class="card">
+        <img src="./img/cartorio.PNG">
+         <h3>Cartorio</h3>
+          <p class="descricao">Ajude a pagar o cartório .</p>
+         <p class="valor">R$ 150,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+  <div class="card">
+        <img src="./img/casal.PNG">
+         <h3>Casal</h3>
+          <p class="descricao"> uma noite para o casal aproveitarem.</p>
+         <p class="valor">R$ 200,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/cerveja.PNG">
+         <h3>Cerveja</h3>
+          <p class="descricao">Contribuição para cerveja não acabar .</p>
+         <p class="valor">R$ 100,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/churrasqueira.PNG">
+         <h3>churrasqueira</h3>
+          <p class="descricao">Churrasqueira eletrica ( para truvar no APE).</p>
+         <p class="valor">R$ 250,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/coberta.PNG">
+         <h3>Coberta</h3>
+          <p class="descricao">Cobertor para Thâmara que sempre esta coberta de razão.</p>
+         <p class="valor">R$ 130,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/colher.PNG">
+         <h3>Colher</h3>
+          <p class="descricao">Faqueiro completo.</p>
+         <p class="valor">R$ 250,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/comida.PNG">
+         <h3>Comida</h3>
+          <p class="descricao">Prioridade na fila do buffet.</p>
+         <p class="valor">R$ 60,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/copo.PNG">
+         <h3>Copo</h3>
+          <p class="descricao">Copos de vidro (Para as visitas pararem de querer meus copos do Napraia).</p>
+         <p class="valor">R$ 50,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/danca.PNG">
+         <h3>Dança</h3>
+          <p class="descricao">Dancinha deTiktok com o casal.</p>
+         <p class="valor">R$ 85,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/depurador.PNG">
+         <h3>Depurador</h3>
+          <p class="descricao">Depurador para o AP não ficar cheia de fumaça.</p>
+         <p class="valor">R$ 300,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/faca.PNG">
+         <h3>Faca</h3>
+          <p class="descricao">Conjunto de facas.</p>
+         <p class="valor">R$ 150,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/festa.PNG">
+         <h3>Festa</h3>
+          <p class="descricao">Alvara para meter o louco na festa.</p>
+         <p class="valor">R$ 150,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/filho.PNG">
+         <h3>Nosso Filho</h3>
+          <p class="descricao">Cota para perguntar quando teremos outro filho.</p>
+         <p class="valor">R$ 250,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/gato.PNG">
+         <h3>Para o nossos Gatinho</h3>
+          <p class="descricao">Aspirador de po para os gatos Brincar.</p>
+         <p class="valor">R$ 380,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/jantar.PNG">
+         <h3>Jogo de Jantar</h3>
+          <p class="descricao">Jogo de jantar para receber vocês .</p>
+         <p class="valor">R$ 300,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/lua.PNG">
+         <h3>Lua de Mel</h3>
+          <p class="descricao">Vaquinha para Lua de Mel.</p>
+         <p class="valor">R$ 100,00</p>
+       <button onclick="presentear('')" class="btn-card">
+         Presentear
+      </button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/lupa.PNG">
+         <h3>Lupa</h3>
+          <p class="descricao">Lupa para o Klécio achar as coisas.</p>
+         <p class="valor">R$ 75,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+    <div class="card">
+        <img src="./img/mochila.PNG">
+         <h3>mochila</h3>
+          <p class="descricao">Mochila para levar o basico na viagem.</p>
+         <p class="valor">R$ 75,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/muler.png">
+         <h3>Boque de Flores</h3>
+          <p class="descricao">Taxa para noiva não jogar o buquê para a sua namorada(o).</p>
+         <p class="valor">R$ 100,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/panela.PNG">
+         <h3>Jogo de Panela</h3>
+          <p class="descricao">Jogo de panela moderno .</p>
+         <p class="valor">R$ 400,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/panela2.PNG">
+         <h3>Air Fryer</h3>
+          <p class="descricao">Air Fryer para ajudar a Thâmara a ser fitness .</p>
+         <p class="valor">R$ 300,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/pano.PNG">
+         <h3></h3>
+          <p class="descricao">Pano de prato (estamos realmente precisando) .</p>
+         <p class="valor">R$ 47,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/som.PNG">
+         <h3>Som do DJ</h3>
+          <p class="descricao">Ajuda extra pro DJ tocar mais.</p>
+         <p class="valor">R$ 150,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
+   <div class="card">
+        <img src="./img/.PNG">
+         <h3></h3>
+          <p class="descricao">.</p>
+         <p class="valor">R$ 150,00</p>
+       <button onclick="presentear('')" class="btn-card">Presentear</button>
+    <p class="status"></p>
+  </div>
 
-    <div class="card" id="presente-jantar">
-        <img src="https://images.unsplash.com/photo-1505692794403-34cb4be5e9c5?auto=format&fit=crop&w=800&q=80">
-        <h3>Jantar Romântico</h3>
-        <button onclick="presentear('Jantar Romântico', 'presente-jantar')" class="btn-card">Presentear</button>
-        <p class="status"></p>
-    </div>
+
 
 </div>
+
 
 
     <!-- LISTA SECRETA DE CONVIDADOS (SÓ OS NOIVOS VEEM) -->
@@ -282,6 +486,10 @@
     <footer>
         <p>Feito com 💚 para nosso grande dia</p>
     </footer>
+
+
+
+
 
 
 
@@ -298,10 +506,6 @@
     </div>
 </div>
 
-
-
-    
-    
 <!-- MODAL DE PRESENTE -->
 <div id="modalPresente" class="modal">
     <div class="modal-content">
@@ -321,5 +525,6 @@
 
     
     <script src="script.js"></script>
+    <script type="module"></script>
 </body>
 </html>

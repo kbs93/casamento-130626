@@ -1,216 +1,70 @@
 body {
   margin: 0;
   background: #ffffff;
-  font-family: 'Playfair Display', serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   color: #4b3f2f;
 }
 
 /* HERO */
 .hero {
   background: url('https://images.unsplash.com/photo-1504198266285-1659872e6590?auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  height: 60vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  text-align: center;
-  color: white;
-}
-
-.hero .overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-background: linear-gradient(120deg, #e6e0d2, #d0c3b1, #fff);
-  background-size: 200% 200%;
-}
-
-.hero h1 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4.5rem;
-  z-index: 10;
-}
-
-.hero p {
-  font-size: 1.5rem;
-  z-index: 10;
-}
-
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 24px;
-  background: #6b4f33;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 1.2rem;
-  z-index: 10;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background: #8a6a47;
-}
-
+  background-size: cover;background-position: center;height: 60vh;display: flex;align-items: center;
+  flex-direction: column;justify-content: center;position: relative;text-align: center;color: white;}
+.hero .overlay {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.45);}
+.hero h1 {font-family: 'Great Vibes', cursive;font-size: 4.5rem;z-index: 10;}
+.hero p {font-size: 1.5rem;z-index: 10;}
+.btn {display: inline-block;margin-top: 20px;padding: 12px 24px;background: #6b4f33;color: white;border-radius: 6px;
+  text-decoration: none;font-size: 1.2rem;z-index: 10;transition: 0.3s;}
+.btn:hover {background: #8a6a47;}
 /* INFO */
-.info, .confirmacao, .presentes {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 10px 20px;
-  text-align: center;
-}
-
-h2 {
-  color: #6b4f33;
-}
-.sentir{color:"red";}
-
-
+.info, .confirmacao, .presentes {max-width: 900px;margin: 60px auto;padding: 10px 20px;text-align: center;}
+h2 {color: #6b4f33;}
 /* FORM */
 #formPresenca input,
-#formPresenca select {
-  width: 90%;
-  padding: 12px;
-  margin: 10px 0;
-  border-radius: 6px;
-  border: 1px solid #c7b8aa;
-  font-size: 1.1rem;
-}
-
-#formPresenca button {
-  width: 50%;
-}
+#formPresenca select {width: 90%;padding: 12px;margin: 10px 0;border-radius: 6px;border: 1px solid #c7b8aa;font-size: 1.1rem;}
+#formPresenca button {width: 50%;}
 
 /* ===================== CARDS DE PRESENTES (MELHORADO) ===================== */
 /* =========================
    LISTA DE PRESENTES
 ========================= */
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-  padding: 60px 20px;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.card {
-  background: #ffffff;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
-  position: relative;
-  text-align: center;
-}
-
+.cards {display: grid;grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));gap: 32px;padding: 60px 20px;
+ max-width: 1200px;margin: auto;}
+.card {background: #ffffff;border-radius: 20px;overflow: hidden;box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+transition: transform 0.35s ease, box-shadow 0.35s ease;position: relative;text-align: center;}
 /* efeito hover elegante */
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
-}
-
+.card:hover {transform: translateY(-8px);box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);}
 /* imagem do card */
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
+.card img {width: 100%;height: 220px;object-fit: cover;transition: transform 0.5s ease;}
 /* zoom suave na imagem */
 .card:hover img {
   transform: scale(1.08);
 }
-
 /* título */
-.card h3 {
-  font-size: 1.3rem;
-  color: #5c4b3b;
-  margin: 20px 16px 10px;
-  font-weight: 600;
-}
-
+.card h3 {font-size: 1.3rem;color: #5c4b3b;margin: 20px 16px 10px;font-weight: 600;}
 /* botão presentear */
-.btn-card {
-  display: inline-block;
-  margin: 14px auto 18px;
-  padding: 12px 26px;
-  border-radius: 30px;
-  border: none;
-  background: linear-gradient(135deg, #d8b07d, #b8905c);
-  color: #fff;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
+.btn-card {display: inline-block;margin: 14px auto 18px;padding: 12px 26px;border-radius: 30px;border: none;
+  background: linear-gradient(135deg, #d8b07d, #b8905c);color: #fff;font-size: 0.95rem;font-weight: 600;cursor: pointer;transition: all 0.3s ease;}
 /* hover do botão */
 .btn-card:hover {
-  background: linear-gradient(135deg, #b8905c, #9f7a47);
-  transform: scale(1.05);
-}
-
+  background: linear-gradient(135deg, #b8905c, #9f7a47);transform: scale(1.05);}
 /* status do presente */
-.card .status {
-  font-size: 0.9rem;
-  margin-bottom: 18px;
-  color: #4caf50;
-  font-weight: 500;
-}
-
+.card .status {font-size: 0.9rem;margin-bottom: 18px;color: #4caf50;font-weight: 500;}
 /* quando presente já foi escolhido */
-.card.selecionado {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-.card.selecionado::after {
-  content: "🎁 Já escolhido";
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: rgba(0, 0, 0, 0.75);
-  color: #fff;
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-}
+.card.selecionado {opacity: 0.6;pointer-events: none;}
+.card.selecionado::after {content: "🎁 Já escolhido";position: absolute;top: 16px;right: 16px;background: rgba(0, 0, 0, 0.75);
+color: #fff;padding: 6px 14px;border-radius: 20px; font-size: 0.8rem;}
+.card .descricao {font-size: 0.95rem;color: #555;margin: 8px 0;line-height: 1.4;}
+.card .valor {font-size: 1.1rem;font-weight: bold;color: #b38b59; /* tom elegante (dourado suave) */
+  margin-bottom: 12px;}
 
 /* =========================
    MODAIS (CONFIRMAÇÃO + PRESENTE)
 ========================= */
-
-.modal {
-  display: none;
-  position: fixed;              /* 🔥 ESSENCIAL */
-  z-index: 9999;
-  inset: 0;                     /* top/right/bottom/left = 0 */
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
-}
-
+.modal {display: none;position: fixed; z-index: 9999;inset: 0;background: rgba(0, 0, 0, 0.55);backdrop-filter: blur(4px);}
 /* conteúdo central do modal */
-.modal-content {
-  background: #ffffff;
-  width: 90%;
-  max-width: 420px;
-  margin: 12% auto;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
-  animation: modalFade 0.35s ease;
-}
-
+.modal-content {background: #ffffff;width: 90%;max-width: 420px;margin: 12% auto;padding: 30px;border-radius: 20px;
+text-align: center;box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);animation: modalFade 0.35s ease;}
 /* botão fechar (X) */
 .modal .close {
   position: absolute;
@@ -261,16 +115,10 @@ h2 {
 ========================= */
 
 /* DESKTOP / TABLET */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 32px;
-}
-
+.cards {display: grid;grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));gap: 32px;}
 /* MOBILE — FORÇA 2 COLUNAS */
-@media (max-width: 768px) {
-  .cards {
-    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
+@media (max-width: 768px) {.cards {
+grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
     gap: 14px;
     padding: 30px 12px;
   }
@@ -441,120 +289,21 @@ h2 {
 
 
 
-/* =========================
-   TIPOGRAFIA GLOBAL
-========================= */
-
-/* Texto geral */
-body {
-  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  line-height: 1.7;
-  color: #4a3f35;
-}
-
-/* Títulos principais */
-h1, h2, h3 {
-  font-family: 'Playfair Display', serif;
-  color: #5c4b3b;
-  letter-spacing: 0.5px;
-}
-
-/* Hero */
-.hero h1 {
-  font-size: clamp(2.4rem, 5vw, 3.6rem);
-  font-weight: 600;
-}
-
-.hero p {
-  font-size: 1.1rem;
-}
-
-/* Seções */
-section h2 {
-  font-size: 2rem;
-  margin-bottom: 24px;
-}
-
-/* Subtítulos */
-h3 {
-  font-size: 1.3rem;
-}
-
-/* Parágrafos */
-p {
-  font-size: 0.95rem;
-}
-
-/* Botões */
-.btn,
-.btn-card {
-  font-family: 'Poppins', sans-serif;
-  letter-spacing: 0.4px;
-}
-
-
 
 
 /* =========================
-   CONTAGEM REGRESSIVA
+   CONTAGEM REGRESSIVA DESKTOP
 ========================= */
-
-.contador {
-  text-align: center;
-}
-
-.contador h2 {
-  margin-bottom: 30px;
-}
-
-.contador-box {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.tempo {
-  background: #ffffff;
-  padding: 20px 18px;
-  min-width: 90px;
-  border-radius: 18px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.tempo span {
-  display: block;
-  font-family: 'Playfair Display', serif;
-  font-size: 2.2rem;
-  color: #5c4b3b;
-}
-
-.tempo small {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #8c7a66;
-}
-
-.contador-msg {
-  margin-top: 20px;
-  font-size: 0.95rem;
-  color: #6f5b45;
-}
-
+.contador {text-align: center;}
+.contador h2 {margin-bottom: 30px;}
+.contador-box {display: flex;justify-content: center;gap: 20px;flex-wrap: wrap;}
+.tempo {background: #ffffff;padding: 20px 18px;min-width: 90px;border-radius: 18px;box-shadow: 0 10px 25px rgba(0,0,0,0.08);}
+.tempo span {display: block;font-family: 'Playfair Display', serif;font-size: 2.2rem;color: #5c4b3b;}
+.tempo small {font-size: 0.75rem;text-transform: uppercase;letter-spacing: 1px;color: #8c7a66;}
+.contador-msg {margin-top: 20px;font-size: 0.95rem;color: #6f5b45;}
 /* Mobile */
-@media (max-width: 480px) {
-  .tempo {
-    min-width: 70px;
-    padding: 14px 10px;
-  }
-
-  .tempo span {
-    font-size: 1.6rem;
-  }
-}
-
-
+@media (max-width: 480px) {.tempo { min-width: 70px; padding: 14px 10px;}
+.tempo span {font-size: 1.6rem;}}
 
 /* =========================
    CONTAGEM REGRESSIVA — MOBILE 4 ITENS
@@ -603,258 +352,5 @@ p {
 
   .tempo small {
     font-size: 0.5rem;
-  }
-}
-
-
-
-/* =========================
-   RESET DE ESPAÇAMENTO
-========================= */
-
-section {
-  margin: 0;
-}
-
-h1, h2, h3, p {
-  margin-top: 0;
-}
-
-/* =========================
-   ESPAÇAMENTO MOBILE (RITMO)
-========================= */
-
-@media (max-width: 768px) {
-
-  .container {
-    padding: 32px 16px; /* 🔥 mais compacto */
-  }
-
-  section + section {
-    padding-top: 32px;
-  }
-
-  /* títulos */
-  section h2 {
-    margin-bottom: 16px;
-  }
-
-  h3 {
-    margin-bottom: 8px;
-  }
-
-  p {
-    margin-bottom: 12px;
-  }
-
-  /* seções específicas */
-  .contador {
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
-  .info,
-  .mapa,
-  .historia,
-  .confirmacao {
-    padding-top: 32px;
-    padding-bottom: 32px;
-  }
-}
-
-
-/* =========================
-   FUNDO ANIMADO SUAVE
-========================= */
-
-.section-soft {
-  background: linear-gradient(120deg, #fff, #fdf6ec, #fff);
-  background-size: 200% 200%;
-  animation: bgFlow 8s ease infinite;
-}
-
-@keyframes bgFlow {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-
-
-
-/* =========================
-   FADE IN SUAVE LETRA 
-========================= */
-
-.fade-in {
-  animation: fadeUp 0.9s ease both;
-}
-
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-
-/* =========================
-   CORAÇÕES FLUTUANTES (CONFETE)
-========================= */
-
-.hearts-confetti {
-  position: fixed;
-  inset: 0;
-  pointer-events: none; /* não atrapalha cliques */
-  overflow: hidden;
-  z-index: 5;
-}
-
-.hearts-confetti span {
-  position: absolute;
-  bottom: -20px;
-  font-size: 18px;
-  color: rgba(224, 69, 69, 0.6);
-  animation: floatHeart linear infinite;
-}
-
-/* animação */
-@keyframes floatHeart {
-  from {
-    transform: translateY(0) scale(1);
-    opacity: 0;
-  }
-  10% {
-    opacity: 0.8;
-  }
-  to {
-    transform: translateY(-120vh) scale(1.3);
-    opacity: 0;
-  }
-}
-
-/* posições e tempos diferentes */
-.hearts-confetti span:nth-child(1) {
-  left: 10%;
-  animation-duration: 12s;
-}
-.hearts-confetti span:nth-child(2) {
-  left: 25%;
-  animation-duration: 9s;
-  font-size: 14px;
-}
-.hearts-confetti span:nth-child(3) {
-  left: 40%;
-  animation-duration: 14s;
-}
-.hearts-confetti span:nth-child(4) {
-  left: 55%;
-  animation-duration: 11s;
-  font-size: 20px;
-}
-.hearts-confetti span:nth-child(5) {
-  left: 70%;
-  animation-duration: 10s;
-}
-.hearts-confetti span:nth-child(6) {
-  left: 85%;
-  animation-duration: 13s;
-  font-size: 16px;
-}
-.hearts-confetti span:nth-child(7) {
-  left: 30%;
-  animation-duration: 15s;
-}
-.hearts-confetti span:nth-child(8) {
-  left: 60%;
-  animation-duration: 8s;
-}
-
-/* Mobile: menos corações */
-@media (max-width: 768px) {
-  .hearts-confetti span:nth-child(n+6) {
-    display: none;
-  }
-}
-
-
-
-
-
-
-
-/* =========================
-   CONFIRMAÇÃO VISUAL RSVP
-========================= */
-
-.confirmacao-visual {
-  margin-top: 28px;
-  display: flex;
-  justify-content: center;
-}
-
-.confirmacao-visual.hidden {
-  display: none;
-}
-
-.confirmacao-card {
-  background: #ffffff;
-  padding: 28px 26px;
-  border-radius: 20px;
-  max-width: 360px;
-  width: 100%;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-  animation: fadeUp 0.6s ease;
-}
-
-/* sucesso */
-.confirmacao-card.sucesso {
-  border-top: 4px solid #4caf50;
-}
-
-/* negativo */
-.confirmacao-card.negativo {
-  border-top: 4px solid #d8b07d;
-}
-
-/* ícone */
-.confirmacao-card .icon {
-  font-size: 2.2rem;
-  margin-bottom: 10px;
-}
-
-/* título */
-.confirmacao-card h3 {
-  margin-bottom: 8px;
-}
-
-/* texto */
-.confirmacao-card p {
-  font-size: 0.95rem;
-  color: #6f5b45;
-}
-
-/* animação */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* mobile */
-@media (max-width: 480px) {
-  .confirmacao-card {
-    padding: 22px 18px;
   }
 }
