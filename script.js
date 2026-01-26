@@ -77,113 +77,6 @@ function atualizarLista() {
   });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// =================================================================
-// SISTEMA DE PRESENTES + MODAIS (CORRIGIDO E MELHORADO)
-// =================================================================
-
-// Guarda o CARD REAL clicado
-let cardSelecionado = null;
-let presenteSelecionado = "";
-
-
-// 1️⃣ Clique em "Presentear"
-function presentear(item, idCard) {
-  presenteSelecionado = item;
-  cardSelecionado = document.getElementById(idCard);
-
-  if (!cardSelecionado) {
-    console.error("❌ Card não encontrado:", idCard);
-    alert("Erro ao selecionar presente. Recarregue a página.");
-    return;
-  }
-
-  document.getElementById("textoConfirmacao").innerText =
-    `Você deseja escolher o presente: "${item}"?`;
-
-  document.getElementById("modalConfirmar").style.display = "block";
-}
-
-
-// 2️⃣ Confirmar presente
-function confirmarPresente() {
-  if (!cardSelecionado) {
-    alert("Erro ao confirmar presente.");
-    return;
-  }
-
-  const botao = cardSelecionado.querySelector(".btn-card");
-  const status = cardSelecionado.querySelector(".status");
-
-  if (botao) botao.style.display = "none";
-  if (status) status.innerHTML = "🎉 Já escolhido!";
-
-  cardSelecionado.classList.add("selecionado");
-
-  // Fecha modal confirmar
-  document.getElementById("modalConfirmar").style.display = "none";
-
-  // Abre modal elegante
-  document.getElementById("textoModal").innerText =
-    `Obrigado por escolher presentear: ${presenteSelecionado} ❤️`;
-
-  document.getElementById("modalPresente").style.display = "block";
-}
-
-
-// 3️⃣ Fechar modal de confirmação
-function fecharModalConfirmar() {
-  document.getElementById("modalConfirmar").style.display = "none";
-}
-
-
-// =========================
-// MODAL ELEGANTE (FECHAR)
-// =========================
-function fecharModal() {
-  document.getElementById("modalPresente").style.display = "none";
-}
-
-
-// =========================
-// FECHAR MODAIS AO CLICAR FORA
-// =========================
-window.onclick = function (event) {
-
-  const modalElegante = document.getElementById("modalPresente");
-  if (event.target === modalElegante) {
-    modalElegante.style.display = "none";
-  }
-
-  const modalConfirmar = document.getElementById("modalConfirmar");
-  if (event.target === modalConfirmar) {
-    modalConfirmar.style.display = "none";
-  }
-};
-
-
-
-
 // =========================
 // CONTAGEM REGRESSIVA
 // =========================
@@ -217,4 +110,151 @@ function atualizarContador() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
+// =========================
+// MODAL DE PRESENTE (ADAPTADO AO SEU HTML)
+// =====================================================
+// SISTEMA DE PRESENTES (UM ÚNICO MODAL)
+// =====================================================
 
+// Abrir modal a partir do botão clicado
+function presentear(botao) {
+  const card = botao.closest(".card");
+  if (!card) return;
+
+  const titulo = card.querySelector("h3")?.innerText || "Presente";
+  const valor = card.querySelector(".valor")?.innerText || "";
+
+  abrirModalPresente(titulo, valor);
+}
+
+// =====================================================
+// MODAL DE PRESENTE
+// =====================================================
+function abrirModalPresente(titulo, valor) {
+  const modal = document.getElementById("modalPresente");
+  const tituloEl = document.getElementById("modalTitulo");
+  const valorEl = document.getElementById("modalValor");
+
+  if (!modal || !tituloEl || !valorEl) {
+    console.error("Estrutura do modalPresente não encontrada");
+    return;
+  }
+
+  tituloEl.innerText = titulo;
+  valorEl.innerText = valor;
+
+  modal.classList.remove("hidden");
+}
+
+function fecharModalPresente() {
+  const modal = document.getElementById("modalPresente");
+  if (modal) modal.classList.add("hidden");
+}
+
+// =====================================================
+// FECHAR AO CLICAR FORA
+// =====================================================
+document.addEventListener("click", function (e) {
+  const modal = document.getElementById("modalPresente");
+  const content = modal?.querySelector(".modal-content");
+
+  if (
+    modal &&
+    !modal.classList.contains("hidden") &&
+    content &&
+    !content.contains(e.target) &&
+    !e.target.classList.contains("btn-card")
+  ) {
+    fecharModalPresente();
+  }
+});
+
+// EXPOR FUNÇÕES PARA O HTML (onclick)
+window.fecharModalPresente = fecharModalPresente;
+window.abrirModalPresente = abrirModalPresente;
+window.presentear = presentear;
+
+
+
+
+// =====================================================
+//AREA DO PIX GERANDO QR CODE
+// =====================================================
+
+const PIX_CHAVE = "a6cb569c-d87a-42c6-8af4-398a4073d79a"; // email, cpf, telefone ou chave aleatória
+const PIX_NOME = "Casamento";
+const PIX_CIDADE = "BRASILIA";
+function gerarPixCopiaECola(valor) {
+  const valorStr = valor.toFixed(2);
+
+  function campo(id, valor) {
+    return id + String(valor.length).padStart(2, "0") + valor;
+  }
+
+  // 🔥 Campo 26 corretamente estruturado
+  const merchantAccountInfo =
+    campo("00", "BR.GOV.BCB.PIX") +
+    campo("01", PIX_CHAVE);
+
+  let payload =
+    "000201" +
+    campo("26", merchantAccountInfo) + // ← AQUI estava o erro
+    "52040000" +
+    "5303986" +
+    campo("54", valorStr) +
+    "5802BR" +
+    campo("59", PIX_NOME) +
+    campo("60", PIX_CIDADE) +
+    "62070503***" +
+    "6304";
+
+  payload += calcularCRC16(payload);
+  return payload;
+}
+
+
+//Função CRC16 (OBRIGATÓRIA)Sem isso o Pix não funciona.
+  
+function calcularCRC16(payload) {
+  let crc = 0xFFFF;
+
+  for (let i = 0; i < payload.length; i++) {
+    crc ^= payload.charCodeAt(i) << 8;
+    for (let j = 0; j < 8; j++) {
+      crc = (crc & 0x8000) ? (crc << 1) ^ 0x1021 : crc << 1;
+    }
+  }
+
+  return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
+}
+
+//Gerar QR dinamicamente ao clicar no card
+let pixAtual = "";
+
+function gerarQrPix(valor) {
+  pixAtual = gerarPixCopiaECola(valor);
+
+  const canvas = document.getElementById("qrCanvas");
+  QRCode.toCanvas(canvas, pixAtual, { width: 220 });
+}
+
+function copiarPix() {
+  navigator.clipboard.writeText(pixAtual);
+  alert("Código Pix copiado!");
+}
+
+//Integrar com SEU botão presentear(this)
+function presentear(botao) {
+  const card = botao.closest(".card");
+  if (!card) return;
+
+  const titulo = card.querySelector("h3")?.innerText || "";
+  const valorTexto = card.querySelector(".valor")?.innerText || "0";
+  const valor = Number(valorTexto.replace(/[^\d,]/g, "").replace(",", "."));
+
+  document.getElementById("modalTitulo").innerText = titulo;
+  document.getElementById("modalValor").innerText = valorTexto;
+
+  gerarQrPix(valor);
+  abrirModalPresente();
+}
