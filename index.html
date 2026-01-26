@@ -204,9 +204,13 @@
         <p class="descricao">
           Bebida pro noivo colocar na adega.</p>
         <p class="valor">R$ 400,00</p>
-          <button onclick="presentear('com uma bebida')" class="btn-card">
-          Presentear
-         </button>
+       <button
+  onclick="abrirModalPresente('Bebida 1', 'R$ 400,00')"
+  class="btn-card">
+  Presentear
+</button>
+
+
        <p class="status"></p>
   </div>
    <div class="card">
@@ -214,9 +218,11 @@
          <h3>Deus tocou</h3>
           <p class="descricao">Deus tocou no coração.</p>
          <p class="valor">R$ 1.000,00</p>
-       <button onclick="presentear('')" class="btn-card">
-         Presentear
-      </button>
+       <button
+  onclick="abrirModalPresente('Deus tocou', 'R$ 1.000,00')"
+  class="btn-card">
+  Presentear
+</button>
     <p class="status"></p>
   </div>
      <div class="card">
@@ -224,9 +230,11 @@
          <h3>Eu ajudei</h3>
           <p class="descricao">So pra dizer que nao dei nada.</p>
          <p class="valor">R$ 50,00</p>
-       <button onclick="presentear('')" class="btn-card">
-         Presentear
-      </button>
+             <button
+  onclick="abrirModalPresente('Eu ajudei', 'R$ 50,00')"
+  class="btn-card">
+  Presentear
+</button>
     <p class="status"></p>
   </div>
       <div class="card">
@@ -463,19 +471,17 @@
     <p class="status"></p>
   </div>
    <div class="card">
-        <img src="./img/.jpg">
+        <img src="./img/.PNG">
          <h3></h3>
           <p class="descricao">.</p>
          <p class="valor">R$ 150,00</p>
        <button onclick="presentear('')" class="btn-card">Presentear</button>
     <p class="status"></p>
   </div>
-
-
-
 </div>
 
 
+  
 
     <!-- LISTA SECRETA DE CONVIDADOS (SÓ OS NOIVOS VEEM) -->
     <section class="lista-convidados" id="listaConvidados">
@@ -483,17 +489,7 @@
         <ul id="lista"></ul>
     </section>
 
-    <footer>
-        <p>Feito com 💚 para nosso grande dia</p>
-    </footer>
-
-
-
-
-
-
-
-    <!-- MODAL DE CONFIRMAÇÃO -->
+    <!-- MODAL DE CONFIRMAÇÃO
 <div id="modalConfirmar" class="modal">
     <div class="modal-content">
         <h2>Confirmar presente?</h2>
@@ -505,26 +501,31 @@
         </div>
     </div>
 </div>
-
+ -->
 <!-- MODAL DE PRESENTE -->
-<div id="modalPresente" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="fecharModal()">&times;</span>
+<div id="modalPresente" class="modal hidden">
+  <span class="close-modal" onclick="fecharModalPresente()">×</span>
 
-        <h2>🎁 Obrigado!</h2>
-        <p id="textoModal">
-            Obrigado por escolher este presente.
-        </p>
+  <div class="modal-content">
+    <h2 id="modalTitulo"></h2>
+    <p id="modalValor"></p>
 
-        <button class="btn btn-fechar" type="button" onclick="fecharModal()">Fechar</button>
+   <div id="qrCanvas"></div>
 
-    </div>
+
+    <button class="btn-copy" onclick="copiarPix()">Copiar código Pix</button>
+  </div>
 </div>
 
 
 
-    
-    <script src="script.js"></script>
-    <script type="module"></script>
+
+    <footer>
+        <p>Feito com 💚 para nosso grande dia</p>
+    </footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
