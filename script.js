@@ -248,9 +248,34 @@ function calcularCRC16(payload) {
 
 // Copiar Pix
 function copiarPix() {
-  navigator.clipboard.writeText(pixAtual);
-  alert("Código Pix copiado!");
+  const botao = document.querySelector(".btn-copy");
+  const heart = document.getElementById("heartAnim");
+
+  if (botao.classList.contains("copiado")) return;
+
+  navigator.clipboard.writeText(pixAtual).then(() => {
+    // Botão verde
+    botao.classList.add("copiado");
+    botao.innerText = "Pix copiado ✓";
+
+    // Mostra coração CSS
+    heart.classList.remove("hidden");
+    heart.classList.add("show");
+
+    setTimeout(() => {
+      heart.classList.remove("show");
+      heart.classList.add("hidden");
+    }, 100);
+
+    // Volta botão
+    setTimeout(() => {
+      botao.classList.remove("copiado");
+      botao.innerText = "Copiar código Pix";
+    }, 9000);
+  });
 }
+
+
 
 // =====================================================
 // EXPOR FUNÇÕES PARA O HTML
@@ -259,3 +284,48 @@ window.presentear = presentear;
 window.abrirModalPresente = abrirModalPresente;
 window.fecharModalPresente = fecharModalPresente;
 window.copiarPix = copiarPix;
+
+
+
+
+
+
+
+
+
+
+
+
+// =====================================================
+//SCRIPT DA ANIMAÇÃO CORAÇÃO 
+// =====================================================
+
+
+function copiarPix() {
+  const botao = document.querySelector(".btn-copy");
+  const heart = document.getElementById("heartAnim");
+
+  if (botao.classList.contains("copiado")) return;
+
+  navigator.clipboard.writeText(pixAtual).then(() => {
+    // Botão verde
+    botao.classList.add("copiado");
+    botao.innerText = "Pix copiado ✔";
+
+    // Mostra coração ❤️
+    heart.classList.remove("hidden");
+    heart.classList.add("show");
+
+    // Remove coração após animação
+    setTimeout(() => {
+      heart.classList.remove("show");
+      heart.classList.add("hidden");
+    }, 1200);
+
+    // Volta botão ao normal
+    setTimeout(() => {
+      botao.classList.remove("copiado");
+      botao.innerText = "Copiar código Pix";
+    }, 9000);
+  });
+}
