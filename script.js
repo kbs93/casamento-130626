@@ -110,10 +110,19 @@ function atualizarContador() {
 setInterval(atualizarContador, 1000);
 atualizarContador();
 
-// =========================
-// MODAL DE PRESENTE (ADAPTADO AO SEU HTML)
+
+
+
+
+
+
+
+
+
+
+
 // =====================================================
-// SISTEMA DE PRESENTES (UM ÚNICO MODAL)
+// SISTEMA DE PRESENTES (MODAL + PIX COPIA E COLA)
 // =====================================================
 
 // Abrir modal a partir do botão clicado
@@ -122,29 +131,42 @@ function presentear(botao) {
   if (!card) return;
 
   const titulo = card.querySelector("h3")?.innerText || "Presente";
-  const valor = card.querySelector(".valor")?.innerText || "";
+  const valorTexto = card.querySelector(".valor")?.innerText || "0";
 
-  abrirModalPresente(titulo, valor);
+  abrirModalPresente(titulo, valorTexto);
 }
 
 // =====================================================
 // MODAL DE PRESENTE
 // =====================================================
-function abrirModalPresente(titulo, valor) {
+
+function abrirModalPresente(titulo, valorTexto) {
   const modal = document.getElementById("modalPresente");
   const tituloEl = document.getElementById("modalTitulo");
   const valorEl = document.getElementById("modalValor");
-
-  if (!modal || !tituloEl || !valorEl) {
-    console.error("Estrutura do modalPresente não encontrada");
-    return;
-  }
+  const pixEl = document.getElementById("pixCopiaCola");
 
   tituloEl.innerText = titulo;
-  valorEl.innerText = valor;
+  valorEl.innerText = valorTexto;
+
+  // 🔥 usa Pix pré-gerado
+  pixAtual = PIX_POR_PRESENTE[titulo];
+
+  if (!pixAtual) {
+    pixEl.value = "Pix indisponível para este presente.";
+  } else {
+    pixEl.value = pixAtual;
+  }
 
   modal.classList.remove("hidden");
 }
+
+
+
+
+
+
+
 
 function fecharModalPresente() {
   const modal = document.getElementById("modalPresente");
@@ -169,21 +191,20 @@ document.addEventListener("click", function (e) {
   }
 });
 
-// EXPOR FUNÇÕES PARA O HTML (onclick)
-window.fecharModalPresente = fecharModalPresente;
-window.abrirModalPresente = abrirModalPresente;
-window.presentear = presentear;
-
-
-
-
 // =====================================================
-//AREA DO PIX GERANDO QR CODE
+// PIX — COPIA E COLA (SEM QR)
 // =====================================================
 
-const PIX_CHAVE = "a6cb569c-d87a-42c6-8af4-398a4073d79a"; // email, cpf, telefone ou chave aleatória
-const PIX_NOME = "Casamento";
-const PIX_CIDADE = "BRASILIA";
+const PIX_POR_PRESENTE = {
+  "Bebida": "00020126530014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0205Adega5204000053039865406135.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63047D9D",
+  "Eu ajudei": "00020126790014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0231Só pra não dizer que nao ajudei520400005303986540550.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63044AC3",
+  "Deus tocou": "00020126700014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0222Deus tocou no coração 52040000530398654071000.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***6304B85F"
+};
+
+
+
+let pixAtual = "";
+
 function gerarPixCopiaECola(valor) {
   const valorStr = valor.toFixed(2);
 
@@ -191,14 +212,13 @@ function gerarPixCopiaECola(valor) {
     return id + String(valor.length).padStart(2, "0") + valor;
   }
 
-  // 🔥 Campo 26 corretamente estruturado
   const merchantAccountInfo =
     campo("00", "BR.GOV.BCB.PIX") +
     campo("01", PIX_CHAVE);
 
   let payload =
     "000201" +
-    campo("26", merchantAccountInfo) + // ← AQUI estava o erro
+    campo("26", merchantAccountInfo) +
     "52040000" +
     "5303986" +
     campo("54", valorStr) +
@@ -212,9 +232,7 @@ function gerarPixCopiaECola(valor) {
   return payload;
 }
 
-
-//Função CRC16 (OBRIGATÓRIA)Sem isso o Pix não funciona.
-  
+// CRC16 obrigatório
 function calcularCRC16(payload) {
   let crc = 0xFFFF;
 
@@ -228,33 +246,16 @@ function calcularCRC16(payload) {
   return (crc & 0xFFFF).toString(16).toUpperCase().padStart(4, "0");
 }
 
-//Gerar QR dinamicamente ao clicar no card
-let pixAtual = "";
-
-function gerarQrPix(valor) {
-  pixAtual = gerarPixCopiaECola(valor);
-
-  const canvas = document.getElementById("qrCanvas");
-  QRCode.toCanvas(canvas, pixAtual, { width: 220 });
-}
-
+// Copiar Pix
 function copiarPix() {
   navigator.clipboard.writeText(pixAtual);
   alert("Código Pix copiado!");
 }
 
-//Integrar com SEU botão presentear(this)
-function presentear(botao) {
-  const card = botao.closest(".card");
-  if (!card) return;
-
-  const titulo = card.querySelector("h3")?.innerText || "";
-  const valorTexto = card.querySelector(".valor")?.innerText || "0";
-  const valor = Number(valorTexto.replace(/[^\d,]/g, "").replace(",", "."));
-
-  document.getElementById("modalTitulo").innerText = titulo;
-  document.getElementById("modalValor").innerText = valorTexto;
-
-  gerarQrPix(valor);
-  abrirModalPresente();
-}
+// =====================================================
+// EXPOR FUNÇÕES PARA O HTML
+// =====================================================
+window.presentear = presentear;
+window.abrirModalPresente = abrirModalPresente;
+window.fecharModalPresente = fecharModalPresente;
+window.copiarPix = copiarPix;
