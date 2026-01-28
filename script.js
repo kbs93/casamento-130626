@@ -162,12 +162,6 @@ function abrirModalPresente(titulo, valorTexto) {
 }
 
 
-
-
-
-
-
-
 function fecharModalPresente() {
   const modal = document.getElementById("modalPresente");
   if (modal) modal.classList.add("hidden");
@@ -271,7 +265,7 @@ function copiarPix() {
     setTimeout(() => {
       botao.classList.remove("copiado");
       botao.innerText = "Copiar código Pix";
-    }, 9000);
+    },);
   });
 }
 
@@ -284,15 +278,6 @@ window.presentear = presentear;
 window.abrirModalPresente = abrirModalPresente;
 window.fecharModalPresente = fecharModalPresente;
 window.copiarPix = copiarPix;
-
-
-
-
-
-
-
-
-
 
 
 
@@ -320,12 +305,12 @@ function copiarPix() {
     setTimeout(() => {
       heart.classList.remove("show");
       heart.classList.add("hidden");
-    }, 1200);
+    }, 4200);
 
     // Volta botão ao normal
     setTimeout(() => {
       botao.classList.remove("copiado");
       botao.innerText = "Copiar código Pix";
-    }, 9000);
+    }, 1500);
   });
 }
