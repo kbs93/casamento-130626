@@ -170,7 +170,7 @@ text-align: center;box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);animation: modalF
   position: absolute;
   top: 14px;
   right: 18px;
-  font-size: 28px;
+  font-size: 68px;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
@@ -185,7 +185,157 @@ text-align: center;box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);animation: modalF
 
 
 
+/* =========================
+   BOTÃO COPIAR PIX (MELHORADO)
+========================= */
+.btn-copy {
+  margin-top: 18px;
+  padding: 12px 26px;
+  border-radius: 30px;
+  border: none;
+  background: linear-gradient(135deg, #b8905c, #9f7a47);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
 
+.btn-copy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #9f7a47, #866338);
+}
+
+.btn-copy:active {
+  transform: scale(0.97);
+}
+
+/* Feedback visual após copiar */
+.btn-copy.copiado {
+  background: linear-gradient(135deg, #4caf50, #388e3c);
+  box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
+}
+
+
+
+
+
+/*/ =====================================================
+//SCRIPT DA ANIMAÇÃO CORAÇÃO 
+
+
+.heart {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.heart.show {
+  animation: heartPop 1.2s ease forwards;
+}
+
+@keyframes heartPop {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+}
+
+
+// ==================================================*/
+
+
+
+
+/* =========================
+   CORAÇÃO CSS ANIMADO
+========================= */
+/* =========================
+   CORAÇÃO CSS ANIMADO (AJUSTADO)
+========================= */
+/* =========================
+   CORAÇÃO CSS ANIMADO (FINAL)
+========================= */
+.heart-css {
+  position: fixed;
+  left: 50%;
+  bottom: 35%;
+
+  width: 70px;
+  height: 70px;
+
+  background: linear-gradient(135deg, #e53935);
+  transform: translateX(-50%) rotate(-45deg);
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 10px;
+  filter: drop-shadow(0 14px 28px rgba(229, 57, 53, 0.35));
+}
+
+/* lobos */
+.heart-css::before,
+.heart-css::after {
+  content: "";
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.heart-css::before {
+  top: -35px;
+  left: 0;
+}
+
+.heart-css::after {
+  left: 35px;
+  top: 0;
+}
+
+/* 🔥 AGORA ANIMANDO bottom */
+.heart-css.show {
+  animation: heartFloatUp 1.97s linear forwards;
+}
+
+@keyframes heartFloatUp {
+  0% {
+    bottom: 35%;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    bottom: 110%; /* 🔥 sai totalmente da tela */
+    opacity: 0;
+  }
+}
 
 
 
