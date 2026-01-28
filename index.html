@@ -203,9 +203,9 @@
       <h3>Bebida</h3>
         <p class="descricao">
           Bebida pro noivo colocar na adega.</p>
-        <p class="valor">R$ 400,00</p>
+        <p class="valor">R$ 135,00</p>
        <button
-  onclick="abrirModalPresente('Bebida 1', 'R$ 400,00')"
+  onclick="abrirModalPresente('Bebida', 'R$ 400,00')"
   class="btn-card">
   Presentear
 </button>
@@ -503,6 +503,8 @@
 </div>
  -->
 <!-- MODAL DE PRESENTE -->
+
+
 <div id="modalPresente" class="modal hidden">
   <span class="close-modal" onclick="fecharModalPresente()">×</span>
 
@@ -510,8 +512,11 @@
     <h2 id="modalTitulo"></h2>
     <p id="modalValor"></p>
 
-   <div id="qrCanvas"></div>
-
+    <textarea
+      id="pixCopiaCola"
+      readonly
+      style="width:100%;height:90px;margin:12px 0;resize:none;"
+    ></textarea>
 
     <button class="btn-copy" onclick="copiarPix()">Copiar código Pix</button>
   </div>
@@ -520,11 +525,11 @@
 
 
 
+
     <footer>
         <p>Feito com 💚 para nosso grande dia</p>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
 <script src="script.js"></script>
 
 </body>
