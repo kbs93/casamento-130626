@@ -284,25 +284,26 @@ function copiarPix() {
 
   if (botao.classList.contains("copiado")) return;
 
-  navigator.clipboard.writeText(pixAtual).then(() => {
-    // Botão verde
-    botao.classList.add("copiado");
-    botao.innerText = "Pix copiado ✔";
+  // 🔥 PRIMEIRO: feedback visual
+  botao.classList.add("copiado");
+  botao.innerText = "Pix copiado ✔";
 
-    // Mostra coração ❤️
-    heart.classList.remove("hidden");
-    heart.classList.add("show");
+  heart.classList.remove("hidden");
+  heart.classList.add("show");
 
-    // Remove coração após animação
-    setTimeout(() => {
-      heart.classList.remove("show");
-      heart.classList.add("hidden");
-    }, 4200);
+  // 🔥 DEPOIS: copia (por último)
+  setTimeout(() => {
+    navigator.clipboard.writeText(pixAtual);
+  }, 0);
 
-    // Volta botão ao normal
-    setTimeout(() => {
-      botao.classList.remove("copiado");
-      botao.innerText = "Copiar código Pix";
-    }, 1500);
-  });
+  // animação
+  setTimeout(() => {
+    heart.classList.remove("show");
+    heart.classList.add("hidden");
+  }, 4200);
+
+  setTimeout(() => {
+    botao.classList.remove("copiado");
+    botao.innerText = "Copiar código Pix";
+  }, 1500);
 }
