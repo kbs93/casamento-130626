@@ -21,7 +21,7 @@
     <!-- HERO -->
     <header class="hero">
         <div class="overlay"></div>
-        <h1>Ana1 & João</h1>
+        <h1>Ana & João</h1>
         <p>Vão se casar</p>
         <a href="#confirmacao" class="btn">Confirmar presença</a>
     </header>
@@ -196,10 +196,18 @@
 <!--======================= LISTA DE PRESENTES ================================== -->
     <h2 style="text-align: center"> Lista de presentes</h2>
 <div class="cards">
-
+  <div class="card">
+        <img src="./img/pipoca.png">
+      <h3>terno</h3>
+        <p class="descricao">
+          Um terno para o pipoca ficar elegante.</p>
+        <p class="valor">R$ 250,00</p>
+       <button onclick="abrirModalPresente('Terno', 'R$ 250,00')"class="btn-card">Presentear</button>
+  <p class="status"></p>
+  </div>
   <div class="card">
     <img src="./img/bebida.jpg">
-      <h3>Bebida</h3>
+      <h3>bebida</h3>
         <p class="descricao">
           Bebida pro noivo colocar na adega.</p>
         <p class="valor">R$ 135,00</p>
@@ -208,7 +216,7 @@
   </div>
    <div class="card">
         <img src="./img/deus.jpg">
-         <h3>Deus tocou</h3>
+         <h3>deus tocou</h3>
           <p class="descricao">Deus tocou no coração.</p>
          <p class="valor">R$ 1.000,00</p>
        <button onclick="abrirModalPresente('Deus tocou', 'R$ 1.000,00')"class="btn-card">Presentear</button>
@@ -216,7 +224,7 @@
   </div>
      <div class="card">
         <img src="./img/julio.jpg">
-         <h3>Eu ajudei</h3>
+         <h3>eu ajudei</h3>
           <p class="descricao">So pra dizer que nao dei nada.</p>
          <p class="valor">R$ 50,00</p>
             <button onclick="abrirModalPresente('Eu ajudei', 'R$ 50,00')"class="btn-card">Presentear</button>
@@ -224,7 +232,7 @@
   </div>
       <div class="card">
         <img src="./img/boleto.jpg">
-         <h3>Boleto</h3>
+         <h3>boleto</h3>
           <p class="descricao">
             Ajuda nos boletos do Casamento.</p>
          <p class="valor">R$ 120,00</p>
@@ -233,7 +241,7 @@
   </div>
     <div class="card">
         <img src="./img/salgrosso.jpg">
-         <h3>Sal grosso</h3>
+         <h3>sal grosso</h3>
           <p class="descricao">Sal grosso para espantar as energias negativas.</p>
          <p class="valor">R$ 50,00</p>
    <button onclick="abrirModalPresente('Sal grosso', 'R$ 50,00')"class="btn-card">Presentear</button>
@@ -241,7 +249,7 @@
   </div>
     <div class="card">
     <img src="./img/cama.jpg">
-      <h3>Lençol</h3>
+      <h3>lençol</h3>
         <p class="descricao">Lençol novo para os gatos arranharem.</p>
         <p class="valor">R$ 80,00</p>
          <button onclick="abrirModalPresente('Lençol', 'R$ 80,00')"class="btn-card">Presentear</button>
@@ -249,15 +257,15 @@
   </div>
       <div class="card">
         <img src="./img/cartorio.jpg">
-         <h3>Cartorio</h3>
+         <h3>cartório</h3>
           <p class="descricao">Ajude a pagar o cartório .</p>
          <p class="valor">R$ 150,00</p>
-        <button onclick="abrirModalPresente(' Cartorio', 'R$ 150,00')"class="btn-card">Presentear</button>
+        <button onclick="abrirModalPresente(' Cartório', 'R$ 150,00')"class="btn-card">Presentear</button>
     <p class="status"></p>
   </div>
   <div class="card">
         <img src="./img/casal.jpg">
-         <h3>Casal</h3>
+         <h3>casal</h3>
           <p class="descricao"> uma noite para o casal aproveitarem.</p>
          <p class="valor">R$ 200,00</p>
        <button onclick="abrirModalPresente(' Casal', 'R$ 200,00')"class="btn-card">Presentear</button>
@@ -265,7 +273,7 @@
   </div>
     <div class="card">
         <img src="./img/cerveja.jpg">
-         <h3>Cerveja</h3>
+         <h3>cerveja</h3>
           <p class="descricao">Contribuição para cerveja não acabar .</p>
          <p class="valor">R$ 100,00</p>
  <button onclick="abrirModalPresente(' Cerveja', 'R$ 100,00')"class="btn-card">Presentear</button>
@@ -281,7 +289,7 @@
   </div>
     <div class="card">
         <img src="./img/coberta.jpg">
-         <h3>Coberta</h3>
+         <h3>coberta</h3>
           <p class="descricao">Cobertor para Thâmara que sempre esta coberta de razão.</p>
          <p class="valor">R$ 130,00</p>
        <button onclick="abrirModalPresente(' Coberta', 'R$ 130,00')"class="btn-card">Presentear</button>
@@ -289,7 +297,7 @@
   </div>
     <div class="card">
         <img src="./img/colher.jpg">
-         <h3>Colher</h3>
+         <h3>colher</h3>
           <p class="descricao">Faqueiro completo.</p>
          <p class="valor">R$ 250,00</p>
      <button onclick="abrirModalPresente(' Colher', 'R$ 250,00')"class="btn-card">Presentear</button>
@@ -297,7 +305,7 @@
   </div>
     <div class="card">
         <img src="./img/comida.jpg">
-         <h3>Comida</h3>
+         <h3>comida</h3>
           <p class="descricao">Prioridade na fila do buffet.</p>
          <p class="valor">R$ 60,00</p>
      <button onclick="abrirModalPresente(' Comida', 'R$ 60,00')"class="btn-card">Presentear</button>
@@ -305,7 +313,7 @@
   </div>
     <div class="card">
         <img src="./img/copo.jpg">
-         <h3>Copo</h3>
+         <h3>copo</h3>
           <p class="descricao">Copos de vidro (Para as visitas pararem de querer meus copos do Napraia).</p>
          <p class="valor">R$ 50,00</p>
        <button onclick="abrirModalPresente(' Copo', 'R$ 50,00')"class="btn-card">Presentear</button>
@@ -313,7 +321,7 @@
   </div>
     <div class="card">
         <img src="./img/danca.jpg">
-         <h3>Dança</h3>
+         <h3>dança</h3>
           <p class="descricao">Dancinha deTiktok com o casal.</p>
          <p class="valor">R$ 85,00</p>
   <button onclick="abrirModalPresente(' Dança', 'R$ 85,00')"class="btn-card">Presentear</button>
@@ -321,7 +329,7 @@
   </div>
     <div class="card">
         <img src="./img/depurador.jpg">
-         <h3>Depurador</h3>
+         <h3>depurador</h3>
           <p class="descricao">Depurador para o AP não ficar cheia de fumaça.</p>
          <p class="valor">R$ 300,00</p>
        <button onclick="abrirModalPresente('Depurador', 'R$ 300,00')"class="btn-card">Presentear</button>
@@ -329,7 +337,7 @@
   </div>
     <div class="card">
         <img src="./img/faca.jpg">
-         <h3>Faca</h3>
+         <h3>faca</h3>
           <p class="descricao">Conjunto de facas.</p>
          <p class="valor">R$ 150,00</p>
        <button onclick="abrirModalPresente(' Faca', 'R$ 150,00')"class="btn-card">Presentear</button>
@@ -337,7 +345,7 @@
   </div>
     <div class="card">
         <img src="./img/festa.jpg">
-         <h3>Festa</h3>
+         <h3>festa</h3>
           <p class="descricao">Alvara para meter o louco na festa.</p>
          <p class="valor">R$ 150,00</p>
      <button onclick="abrirModalPresente('Festa', 'R$ 150,00')"class="btn-card">Presentear</button>
@@ -345,15 +353,15 @@
   </div>
     <div class="card">
         <img src="./img/filho.jpg">
-         <h3>Nosso filho</h3>
+         <h3>nosso filho</h3>
           <p class="descricao">Cota para perguntar quando teremos outro filho.</p>
          <p class="valor">R$ 250,00</p>
-     <button onclick="abrirModalPresente('Noss filho', 'R$ 250,00')"class="btn-card">Presentear</button>
+     <button onclick="abrirModalPresente('Nosso filho', 'R$ 250,00')"class="btn-card">Presentear</button>
     <p class="status"></p>
   </div>
     <div class="card">
         <img src="./img/gato.jpg">
-         <h3>Para os gatos</h3>
+         <h3>para os gatos</h3>
           <p class="descricao">Aspirador de po para os gatos Brincar.</p>
          <p class="valor">R$ 380,00</p>
    <button onclick="abrirModalPresente('Para os gatos', 'R$ 380,00')"class="btn-card">Presentear</button>
@@ -361,7 +369,7 @@
   </div>
     <div class="card">
         <img src="./img/jantar.jpg">
-         <h3>Jogo de jantar</h3>
+         <h3>jogo de jantar</h3>
           <p class="descricao">Jogo de jantar para receber vocês .</p>
          <p class="valor">R$ 300,00</p>
         <button onclick="abrirModalPresente('Jogo de jantar', 'R$ 300,00')"class="btn-card">Presentear</button>
@@ -369,7 +377,7 @@
   </div>
     <div class="card">
         <img src="./img/lua.jpg">
-         <h3>Lua de mel</h3>
+         <h3>lua de mel</h3>
           <p class="descricao">Vaquinha para Lua de Mel.</p>
          <p class="valor">R$ 100,00</p>
         <button onclick="abrirModalPresente('Lua de mel', 'R$ 100,00')"class="btn-card">Presentear</button>
@@ -377,7 +385,7 @@
   </div>
     <div class="card">
         <img src="./img/lupa.jpg">
-         <h3>Lupa</h3>
+         <h3>lupa</h3>
           <p class="descricao">Lupa para o Klécio achar as coisas.</p>
          <p class="valor">R$ 75,00</p>
         <button onclick="abrirModalPresente('Lupa', 'R$ 100,00')"class="btn-card">Presentear</button>
@@ -393,7 +401,7 @@
   </div>
    <div class="card">
         <img src="./img/muler.jpg">
-         <h3>Boque de flores</h3>
+         <h3>boque de flores</h3>
           <p class="descricao">Taxa para noiva não jogar o buquê para a sua namorada(o).</p>
          <p class="valor">R$ 100,00</p>
        <button onclick="abrirModalPresente('Boque de flores', 'R$ 100,00')"class="btn-card">Presentear</button>
@@ -401,7 +409,7 @@
   </div>
    <div class="card">
         <img src="./img/panela.jpg">
-         <h3>Jogo de panela</h3>
+         <h3>jogo de panela</h3>
           <p class="descricao">Jogo de panela moderno .</p>
          <p class="valor">R$ 400,00</p>
         <button onclick="abrirModalPresente('Jogo de panela', 'R$ 400,00')"class="btn-card">Presentear</button>
@@ -409,7 +417,7 @@
   </div>
    <div class="card">
         <img src="./img/panela2.jpg">
-         <h3>Air fryer</h3>
+         <h3>air fryer</h3>
           <p class="descricao">Air Fryer para ajudar a Thâmara a ser fitness .</p>
          <p class="valor">R$ 300,00</p>
        <button onclick="abrirModalPresente(' Air fryer', 'R$ 300,00')"class="btn-card">Presentear</button>
@@ -417,7 +425,7 @@
   </div>
    <div class="card">
         <img src="./img/pano.jpg">
-         <h3>Pano</h3>
+         <h3>pano</h3>
           <p class="descricao">Pano de prato (estamos realmente precisando) .</p>
          <p class="valor">R$ 47,00</p>
        <button onclick="abrirModalPresente('Pano', 'R$ 47,00')"class="btn-card">Presentear</button>
@@ -425,7 +433,7 @@
   </div>
    <div class="card">
         <img src="./img/som.jpg">
-         <h3>Som do dj</h3>
+         <h3>som do dj</h3>
           <p class="descricao">Ajuda extra pro DJ tocar mais.</p>
          <p class="valor">R$ 150,00</p>
      <button onclick="abrirModalPresente('Som do dj', 'R$ 150,00')"class="btn-card">Presentear</button>
@@ -458,8 +466,8 @@
     ></textarea>
 
     <button class="btn-copy" onclick="copiarPix()">Copiar código Pix</button>
-    
     <div id="heartAnim" class="heart-css hidden"></div>
+    
 
 
   </div>
