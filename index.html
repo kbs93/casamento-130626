@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Casamento - Ana1 & João</title>
 
-
-
     <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +23,8 @@
         <p>Vão se casar</p>
         <a href="#confirmacao" class="btn">Confirmar presença</a>
     </header>
-
-<section class="contador container">
-  <h2>⏳ Contagem regressiva 1</h2>
-
+<section class="contador container historia">
+  <h2>⏳ Contagem regressiva</h2>
   <div class="contador-box">
     <div class="tempo">
       <span id="dias">0</span>
@@ -47,7 +43,6 @@
       <small>Segundos</small>
     </div>
   </div>
-
   <p class="contador-msg">
     para o grande dia 💖
   </p>
@@ -55,15 +50,14 @@
 
 
 
-    
 
     <!-- INFORMAÇÕES -->
 <section class="info container">
   <div class="info-grid">
     <div class="info-bloco">
-      <h2>📅 Data & Local</h2>
+      <h2>📅 Data </h2>
       <p><strong>12 de Dezembro de 2026</strong></p>
-      <p>Chácara Bela Vista – Brasília, DF</p>
+  
     </div>
 
     <div class="info-bloco">
@@ -81,9 +75,7 @@
     
 <section class="historia container" id="historia">
   <h2>💞 Nossa História</h2>
-
   <div class="historia-lista">
-
     <div class="historia-item">
       <h3>🌿 Como nos conhecemos</h3>
       <p>
@@ -115,29 +107,8 @@
 </section>
 
 <!-- INFORMAÇÕES BÁSICAS -->
-
-<!-- MAPA DO LOCAL -->
-<section class="mapa container" id="mapa">
-  <h2>📍 Local do Casamento</h2>
-
-  <p class="mapa-desc">
-    Chácara Bela Vista – Brasília, DF  
-    <br>
-    <small>Toque no mapa para ver rotas e como chegar</small>
-  </p>
-
-  <div class="mapa-card">
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3839.121617968927!2d-47.882168!3d-15.787241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935a2570e76e3a87%3A0x7fec7b0f8a2f58e2!2sBras%C3%ADlia%20DF!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
-      loading="lazy"
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
-
-
-<section class="info-basica container" id="informacoes">
-  <h2>📌 Informações Básicas</h2>
+<section class="info-basica container historia" id="informacoes">
+  <h2>📌 Informações Importante</h2>
 
   <div class="info-cards">
 
@@ -162,39 +133,43 @@
         <li>Não publicar fotos delicadas.</li>
       </ul>
     </div>
+       <div class="info-card">
+      <h3>Convite</h3>
+      <ul>
+        <li>Convite sera entregue mediante a confirmacao Desde ja agradeços pela presença de todes 
+          voces saomuito importante na nossa vida, queremos comemorar com voeces esse momento importante </li>
+    
+      </ul>
+    </div>
 
   </div>
 </section>
 
 
-    <!-- CONFIRMAÇÃO DE PRESENÇA -->
-    <section class="confirmacao" id="confirmacao">
+    <!--=====================CONFIRMAÇÃO DE PRESENÇA =============================-->
+    <section class="confirmacao historia" id="confirmacao">
         <h2>✉️ Confirme sua presença</h2>
-
    <form id="formPresenca">
     <input type="text" id="nome" placeholder="Seu nome" required>
-
     <input 
     type="tel" 
     id="telefone" 
     placeholder="(61) 99999-9999" 
     maxlength="15" 
     required>
-
-
     <select id="confirmacaoSelect">
         <option value="sim">Confirmo presença</option>
         <option value="nao">Não poderei ir</option>
     </select>
-
     <button type="submit" class="btn">Enviar</button>
 </form>
-        <p id="msgConfirmacao"></p>
-    </section>
+  <p id="msgConfirmacao"></p>
+</section>
 
 
 <!--======================= LISTA DE PRESENTES ================================== -->
-    <h2 style="text-align: center"> Lista de presentes</h2>
+<!--============================================================================= -->
+<div class="historia container"><h2> Lista de presentes</h2></div>
 <div class="cards">
   <div class="card">
         <img src="./img/pipoca.png">
@@ -442,36 +417,40 @@
  
 </div>
 
-
-  
-
-    <!-- LISTA SECRETA DE CONVIDADOS (SÓ OS NOIVOS VEEM) -->
-    <section class="lista-convidados" id="listaConvidados">
-        <h2>Lista de Convidados Confirmados (somente noivos)</h2>
-        <ul id="lista"></ul>
-    </section>
-
-
+    <!--===================== MODAS DOS CARDS QUANDO CLICAR NO PRESENTEAR =========================== -->
 <div id="modalPresente" class="modal hidden">
   <span class="close-modal" onclick="fecharModalPresente()">×</span>
-
   <div class="modal-content">
     <h2 id="modalTitulo"></h2>
     <p id="modalValor"></p>
-
     <textarea
       id="pixCopiaCola"
       readonly
-      style="width:100%;height:40px;margin:12px 0;resize:none;"
-    ></textarea>
-
+      style="width:100%;height:65px;margin:10px 0;resize:none;"
+    ></textarea><!---edita o campo do pix importante-->
     <button class="btn-copy" onclick="copiarPix()">Copiar código Pix</button>
     <div id="heartAnim" class="heart-css hidden"></div>
-    
-
+    <p id="pixHint" class="pix-hint hidden">Abra o app do seu banco para concluir o pagamento 💚</p>
 
   </div>
 </div>
+<!-- =========================
+ MODAL DE CONFIRMAÇÃO
+========================= -->
+<div id="modalConfirmacao" class="modal-confirmacao hidden">
+  <div class="modal-box">
+    <button class="modal-close" onclick="fecharModalConfirmacao()">×</button>
+
+    <div class="modal-icon">❤️</div>
+
+    <p id="modalMensagem"></p>
+
+    <button class="btn-modal" onclick="fecharModalConfirmacao()">
+      Fechar
+    </button>
+  </div>
+</div>
+
 
 
 
@@ -481,7 +460,7 @@
         <p>Feito com 💚 para nosso grande dia</p>
     </footer>
 
-<script src="script.js"></script>
+<script type="module" src="script.js"></script>
 
 </body>
 </html>

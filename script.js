@@ -1,8 +1,11 @@
-// =========================
-// LISTA INTERNA DE CONVIDADOS
-// =========================
-let convidados = [];
+import {
+  collection,
+  setDoc,
+  doc,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
 
+import { db } from "./firebase-config.js";
 
 // =========================
 // MÁSCARA DO TELEFONE
@@ -25,18 +28,17 @@ if (telefoneInput) {
   });
 }
 
-
 // =========================
 // FORMULÁRIO DE PRESENÇA
 // =========================
 const formPresenca = document.getElementById("formPresenca");
 
 if (formPresenca) {
-  formPresenca.addEventListener("submit", function (e) {
+  formPresenca.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const nome = document.getElementById("nome").value;
-    const telefone = document.getElementById("telefone").value;
+    const nome = document.getElementById("nome").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
     const confirmacao = document.getElementById("confirmacaoSelect").value;
     const msg = document.getElementById("msgConfirmacao");
 
@@ -46,36 +48,34 @@ if (formPresenca) {
       return;
     }
 
-    if (confirmacao === "sim") {
-      msg.innerHTML = `Obrigado, ${nome}! Sua presença foi confirmada ❤️`;
+    try {
+  
+// 🔥 ID legível: nome + telefone
+const idDocumento = nome
+  .toLowerCase()
+  .trim()
+  .replace(/\s+/g, "_")
+  .replace(/[^\w_]/g, "");
 
-      convidados.push({ nome, telefone });
-      atualizarLista();
-    } else {
-      msg.innerHTML = "Que pena que você não poderá ir 😢";
+
+await setDoc(doc(db, "confirmacoes", idDocumento), {
+  nome,
+  telefone,
+  confirmacao,
+  createdAt: serverTimestamp()
+});
+  mostrarModalConfirmacao(`Obrigado, ${nome}! Sua presença foi confirmada ❤️`);
+      msg.style.display = "block";
+      formPresenca.reset();
+
+    } catch (error) {
+      console.error("Erro ao salvar no Firebase:", error);
+      msg.innerHTML = "Erro ao enviar confirmação. Tente novamente.";
+      msg.style.display = "block";
     }
-
-    msg.style.display = "block";
-    this.reset();
   });
 }
 
-
-// =========================
-// ATUALIZA LISTA SECRETA
-// =========================
-function atualizarLista() {
-  const lista = document.getElementById("lista");
-  if (!lista) return;
-
-  lista.innerHTML = "";
-
-  convidados.forEach(item => {
-    const li = document.createElement("li");
-    li.innerHTML = `<strong>${item.nome}</strong> — <span>${item.telefone}</span>`;
-    lista.appendChild(li);
-  });
-}
 
 // =========================
 // CONTAGEM REGRESSIVA
@@ -84,28 +84,23 @@ function atualizarLista() {
 // DATA DO CASAMENTO (ANO, MÊS-1, DIA, HORA, MINUTO)
 const dataCasamento = new Date(2026, 5, 13, 16, 59,59); 
 // 12 de dezembro de 2026 às 16:00
-
 function atualizarContador() {
   const agora = new Date();
   const diferenca = dataCasamento - agora;
-
   if (diferenca <= 0) {
     document.querySelector(".contador-box").innerHTML =
       "<strong>🎉 É hoje! 🎉</strong>";
     return;
   }
-
   const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
   const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
   const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
   const segundos = Math.floor((diferenca / 1000) % 60);
-
   document.getElementById("dias").textContent = dias;
   document.getElementById("horas").textContent = horas;
   document.getElementById("minutos").textContent = minutos;
   document.getElementById("segundos").textContent = segundos;
 }
-
 // Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
 atualizarContador();
@@ -116,15 +111,12 @@ atualizarContador();
 // =====================================================
 // SISTEMA DE PRESENTES (MODAL + PIX COPIA E COLA)
 // =====================================================
-
 // Abrir modal a partir do botão clicado
 function presentear(botao) {
   const card = botao.closest(".card");
   if (!card) return;
-
   const titulo = card.querySelector("h3")?.innerText || "Presente";
   const valorTexto = card.querySelector(".valor")?.innerText || "0";
-
   abrirModalPresente(titulo, valorTexto);
 }
 
@@ -137,27 +129,19 @@ function abrirModalPresente(titulo, valorTexto) {
   const tituloEl = document.getElementById("modalTitulo");
   const valorEl = document.getElementById("modalValor");
   const pixEl = document.getElementById("pixCopiaCola");
-
   tituloEl.innerText = titulo;
   valorEl.innerText = valorTexto;
 
-  // 🔥 usa Pix pré-gerado
-  
+  // usa Pix pré-gerado
 const chave = titulo.trim().toLowerCase();
 pixAtual = PIX_POR_PRESENTE[chave];
-
-
 if (!pixAtual) {
   pixEl.value = "Pix indisponível para este presente.";
 } else {
   pixEl.value = pixAtual;
 }
-
-
   modal.classList.remove("hidden");
 }
-
-
 function fecharModalPresente() {
   const modal = document.getElementById("modalPresente");
   if (modal) modal.classList.add("hidden");
@@ -184,7 +168,6 @@ document.addEventListener("click", function (e) {
 // =====================================================
 // PIX — COPIA E COLA (SEM QR)
 // =====================================================
-
 const PIX_POR_PRESENTE = {
   "bebida": "00020126530014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0205Adega5204000053039865406135.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63047D9D",
   "eu ajudei": "00020126790014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0231Só pra não dizer que nao ajudei520400005303986540550.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63044AC3",
@@ -216,8 +199,6 @@ const PIX_POR_PRESENTE = {
   "pano":"00020126620014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0214Pano de Prato 520400005303986540547.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***6304BC90",
   "som do dj":"00020126610014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0213DJ tocar mais5204000053039865406150.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***630497B4"
 };
-
-
 
 let pixAtual = "";
 function gerarPixCopiaECola(valor) {
@@ -270,40 +251,57 @@ window.presentear = presentear;
 window.abrirModalPresente = abrirModalPresente;
 window.fecharModalPresente = fecharModalPresente;
 window.copiarPix = copiarPix;
-
-
-
 // =====================================================
 //SCRIPT DA ANIMAÇÃO CORAÇÃO 
 // =====================================================
-
-
 function copiarPix() {
   const botao = document.querySelector(".btn-copy");
   const heart = document.getElementById("heartAnim");
-
+  const hint = document.getElementById("pixHint");
   if (botao.classList.contains("copiado")) return;
-
-  // 🔥 PRIMEIRO: feedback visual
-  botao.classList.add("copiado");
-  botao.innerText = "Pix copiado ✔";
-
-  heart.classList.remove("hidden");
-  heart.classList.add("show");
-
-  // 🔥 DEPOIS: copia (por último)
-  setTimeout(() => {
-    navigator.clipboard.writeText(pixAtual);
-  }, 0);
-
-  // animação
-  setTimeout(() => {
-    heart.classList.remove("show");
-    heart.classList.add("hidden");
-  }, 4200);
-
-  setTimeout(() => {
-    botao.classList.remove("copiado");
-    botao.innerText = "Copiar código Pix";
-  }, 1500);
+  navigator.clipboard.writeText(pixAtual).then(() => {
+    // Botão
+    botao.classList.add("copiado");
+    botao.innerText = "Pix copiado ✔";
+    // Texto orientativo
+    hint.classList.remove("hidden");
+    setTimeout(() => hint.classList.add("show"), 50);
+    // Coração ❤️
+    heart.classList.remove("hidden");
+    heart.classList.add("show");
+    // Remove coração
+    setTimeout(() => {
+      heart.classList.remove("show");
+      heart.classList.add("hidden");
+    }, 4200);
+    // Reset botão e texto
+    setTimeout(() => {
+      botao.classList.remove("copiado");
+      botao.innerText = "Copiar código Pix";
+      hint.classList.remove("show");
+      setTimeout(() => hint.classList.add("hidden"), 300);
+    }, 3000);
+  });
 }
+
+
+/* =========================
+ MODAL CONFIRMAÇÃO PRESENÇA
+========================= */
+function mostrarModalConfirmacao(texto) {
+  const modal = document.getElementById("modalConfirmacao");
+  const mensagem = document.getElementById("modalMensagem");
+
+  mensagem.innerHTML = texto;
+  modal.classList.remove("hidden");
+}
+
+function fecharModalConfirmacao() {
+  const modal = document.getElementById("modalConfirmacao");
+  modal.classList.add("hidden");
+}
+
+// ✅ expõe pro onclick do HTML funcionar
+window.fecharModalConfirmacao = fecharModalConfirmacao;
+window.mostrarModalConfirmacao = mostrarModalConfirmacao;
+
