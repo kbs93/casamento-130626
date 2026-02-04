@@ -103,20 +103,20 @@ h2 {color: #6b4f33;}
  /* hero mais alto no mobile */
 @media (max-width: 768px) {
   .hero {
-    min-height: 30vh;             
-    background-position: center 15%;
+    min-height: 52vh;             
+    background-position: center top;
   }
 
   .hero h1 {
-    font-size: 1.2rem;
-    color: #ffffffe0;
- font-family:Verdana, Geneva, Tahoma, sans-serif
+    font-size: 1.6rem;
+    color: #ffffff;
+ font-family: 'Great Vibes', cursive;
   }
 
   .hero p {
     font-size: 1.3rem;
         color: #ffffffe0;
-      font-family:Verdana, Geneva, Tahoma, sans-serif
+ font-family: 'Great Vibes', cursive;
   }
 }
 
@@ -130,7 +130,7 @@ h2 {color: #6b4f33;}
 
 /* ===================== CARDS DE PRESENTES (MELHORADO) ===================== */
 /* =========================
-   LISTA DE PRESENTES
+   LISTA DE PRESENTES                font-family: 'Great Vibes', cursive;
 ========================= */
 .cards {display: grid;grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));gap: 32px;padding: 60px 20px;
  max-width: 1200px;margin: auto;}
@@ -325,39 +325,70 @@ grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
   }
 }
 
-
 /* =========================
    CONTAINER PADRÃO
 ========================= */
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 6px 10px;
-
+  padding: 12px 16px; /* padding mais equilibrado */
 }
-
-/* =========================
-   INFO (DATA + SOBRE)
-========================= */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 40px;
+  gap: 20px;           /* antes estava 40px (espaço exagerado) */
+  margin-top: 0;
 }
-
 .info-bloco {
   text-align: center;
+  margin-bottom: 30px; /* controla o espaço entre seções */
+}
+.info-bloco h2 {
+  margin: 16px 0 10px; /* remove espaço excessivo acima/abaixo */
 }
 
-.info-bloco h2 {
-  margin-bottom: 12px;
+/*---------------TEXTOS --------- */
+.info-bloco p {
+  margin: 0 auto 12px;
+  max-width: 420px;    /* melhora leitura */
+  line-height: 1.5;
 }
+.contato-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;           /* espaço correto entre nome e ícone */
+  margin: 10px 0;
+}
+
+.whatsapp-link:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ------------- AJUSTES MOBILE----------------*/
+@media (max-width: 768px) {
+  .info-grid {
+    gap: 16px;
+  }
+
+  .info-bloco {
+    margin-bottom: 16px;
+  }
+
+  .info-bloco h2 {
+    margin: 14px 0 8px;
+  }
+}
+
+
+
+
+
 
 /* =========================
    NOSSA HISTÓRIA (GRID)
 ========================= */
-
-
 
 .historia-lista {
   display: grid;
@@ -389,7 +420,7 @@ grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
   background-color: #fc9c262f;
   border-radius: 144px;
 }
-
+#prazo{font-size: 1.1rem; margin-top: 3px;}
 
 
 /* MOBILE */
@@ -535,8 +566,6 @@ gap: 10px;max-width: 100%;padding: 0 10px;}
   }
 }
 
-
-
 .modal-box.modal-alerta {
   border-top: 4px solid #f5b301;
 }
@@ -549,6 +578,61 @@ gap: 10px;max-width: 100%;padding: 0 10px;}
   border-top: 4px solid #c9a47c;
 }
 
+/* =========================
+   FOOTER
+========================= */
+footer {
+  margin-top: 60px;
+  padding: 25px 15px;
 
+  background: linear-gradient(
+    135deg,
+    #d37e1d80,
+    #fdfaf6
+  );
+
+  text-align: center;
+  font-size: 1.1rem;
+  color: #6b4f3f;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* Texto */
+footer p {
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+
+/* Efeito hover sutil */
+footer:hover {
+  background: linear-gradient(
+    135deg,
+    #f3e7db,
+    #faf4ee
+  );
+}
+
+/* =========================
+  WHATSAPP ZAP
+========================= */
+.zaptitulo{
+ color: #684a0a;
+ font-size: 1.1rem;
+}
+
+.whatsapp-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
 
 

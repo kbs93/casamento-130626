@@ -54,7 +54,7 @@ if (formPresenca) {
 
     try {
   
-// 🔥 ID legível: nome + telefone
+// ID legível: nome + telefone
 const idDocumento = nome
   .toLowerCase()
   .trim()
@@ -62,7 +62,7 @@ const idDocumento = nome
   .replace(/[^\w_]/g, "");
 
 // =========================
-// 🔒 VERIFICA DUPLICIDADE
+// VERIFICA DUPLICIDADE
 // =========================
 
 // Normalizações
@@ -101,9 +101,9 @@ if (!snapTelefone.empty) {
 
 await setDoc(doc(db, "confirmacoes", idDocumento), {
   nome,
-  nomeLower: nomeNormalizado,        // 🔑 para busca
+  nomeLower: nomeNormalizado,// esse nome  para busca e fazer a comparação se exisrte ou nao IMPORTANTE
   telefone,
-  telefoneClean: telefoneNormalizado, // 🔑 para busca
+  telefoneClean: telefoneNormalizado, //para busca
   confirmacao,
   createdAt: serverTimestamp()
 });
@@ -111,11 +111,11 @@ await setDoc(doc(db, "confirmacoes", idDocumento), {
  
 if (confirmacao === "sim") {
   mostrarModalConfirmacao(
-    `Obrigado, ${nome}! Sua presença foi confirmada ❤️`
+    `Obrigado, ${nome}! Sua presença foi confirmada `
   );
 } else {
   mostrarModalConfirmacao(
-    `${nome}, sentimos muito que você não poderá comparecer 😢`
+    `${nome}, sentimos muito que você não poderá comparecer`
   );
 }
       msg.style.display = "block";
@@ -220,6 +220,7 @@ document.addEventListener("click", function (e) {
 // PIX — COPIA E COLA (SEM QR)
 // =====================================================
 const PIX_POR_PRESENTE = {
+  "terno":"00020126600014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0212Terno pipoca5204000053039865406250.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63045AC3",
   "bebida": "00020126530014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0205Adega5204000053039865406135.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63047D9D",
   "eu ajudei": "00020126790014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0231Só pra não dizer que nao ajudei520400005303986540550.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***63044AC3",
   "deus tocou": "00020126700014BR.GOV.BCB.PIX0122thamarafdias@gmail.com0222Deus tocou no coração 52040000530398654071000.005802BR5921THAMARA FERREIRA DIAS6008BRASILIA62070503***6304B85F",
