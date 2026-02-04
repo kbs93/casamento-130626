@@ -2,8 +2,12 @@ import {
   collection,
   setDoc,
   doc,
-  serverTimestamp
+  serverTimestamp,
+  query,
+  where,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.8.0/firebase-firestore.js";
+
 
 import { db } from "./firebase-config.js";
 
@@ -57,14 +61,63 @@ const idDocumento = nome
   .replace(/\s+/g, "_")
   .replace(/[^\w_]/g, "");
 
+// =========================
+// 🔒 VERIFICA DUPLICIDADE
+// =========================
+
+// Normalizações
+const nomeNormalizado = nome.toLowerCase().trim();
+const telefoneNormalizado = telefone.replace(/\D/g, "");
+
+// 🔍 Verifica nome duplicado
+const qNome = query(
+  collection(db, "confirmacoes"),
+  where("nomeLower", "==", nomeNormalizado)
+);
+
+const snapNome = await getDocs(qNome);
+if (!snapNome.empty) {
+  mostrarModalConfirmacao(
+    "Este nome já foi utilizado na confirmação.",
+    "alerta"
+  );
+  return;
+}
+
+// 🔍 Verifica telefone duplicado
+const qTelefone = query(
+  collection(db, "confirmacoes"),
+  where("telefoneClean", "==", telefoneNormalizado)
+);
+
+const snapTelefone = await getDocs(qTelefone);
+if (!snapTelefone.empty) {
+  mostrarModalConfirmacao(
+    "Este telefone já foi utilizado na confirmação.",
+    "alerta"
+  );
+  return;
+}
 
 await setDoc(doc(db, "confirmacoes", idDocumento), {
   nome,
+  nomeLower: nomeNormalizado,        // 🔑 para busca
   telefone,
+  telefoneClean: telefoneNormalizado, // 🔑 para busca
   confirmacao,
   createdAt: serverTimestamp()
 });
-  mostrarModalConfirmacao(`Obrigado, ${nome}! Sua presença foi confirmada ❤️`);
+
+ 
+if (confirmacao === "sim") {
+  mostrarModalConfirmacao(
+    `Obrigado, ${nome}! Sua presença foi confirmada ❤️`
+  );
+} else {
+  mostrarModalConfirmacao(
+    `${nome}, sentimos muito que você não poderá comparecer 😢`
+  );
+}
       msg.style.display = "block";
       formPresenca.reset();
 
@@ -104,8 +157,6 @@ function atualizarContador() {
 // Atualiza a cada segundo
 setInterval(atualizarContador, 1000);
 atualizarContador();
-
-
 
 
 // =====================================================
@@ -288,20 +339,42 @@ function copiarPix() {
 /* =========================
  MODAL CONFIRMAÇÃO PRESENÇA
 ========================= */
-function mostrarModalConfirmacao(texto) {
+function mostrarModalConfirmacao(mensagem, tipo = "sucesso") {
   const modal = document.getElementById("modalConfirmacao");
-  const mensagem = document.getElementById("modalMensagem");
+  const mensagemEl = document.getElementById("modalMensagem");
+  const iconEl = modal.querySelector(".modal-icon");
+  const boxEl = modal.querySelector(".modal-box");
 
-  mensagem.innerHTML = texto;
+  // Reset visual
+  boxEl.classList.remove("modal-sucesso", "modal-alerta", "modal-erro");
+
+  // Tipos de modal
+  if (tipo === "alerta") {
+    iconEl.textContent = "⚠️";
+    boxEl.classList.add("modal-alerta");
+  } else if (tipo === "erro") {
+    iconEl.textContent = "❌";
+    boxEl.classList.add("modal-erro");
+  } else {
+    iconEl.textContent = "❤️";
+    boxEl.classList.add("modal-sucesso");
+  }
+
+  mensagemEl.textContent = mensagem;
   modal.classList.remove("hidden");
 }
 
-function fecharModalConfirmacao() {
+// =========================
+// FECHAR MODAL CONFIRMAÇÃO
+// =========================
+window.fecharModalConfirmacao = function () {
   const modal = document.getElementById("modalConfirmacao");
-  modal.classList.add("hidden");
-}
+  if (!modal) return;
 
-// ✅ expõe pro onclick do HTML funcionar
-window.fecharModalConfirmacao = fecharModalConfirmacao;
-window.mostrarModalConfirmacao = mostrarModalConfirmacao;
+  modal.classList.add("hidden");
+
+  // limpa mensagem (opcional)
+  const msg = document.getElementById("modalMensagem");
+  if (msg) msg.textContent = "";
+};
 

@@ -6,13 +6,13 @@ body {
 }
 
 /*======================================== HERO  ================================================================*/
-.hero {
+/*.hero {
   background: url('https://images.unsplash.com/photo-1504198266285-1659872e6590?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;background-position: center;height: 60vh;display: flex;align-items: center;
-  flex-direction: column;justify-content: center;position: relative;text-align: center;color: white;}
-.hero .overlay {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.45);}
+  flex-direction: column;justify-content: center;position: relative;text-align: center;color: white;} */
+/*.hero .overlay {position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: rgba(0,0,0,0.45);}  
 .hero h1 {font-family: 'Great Vibes', cursive;font-size: 4.5rem;z-index: 10;}
-.hero p {font-size: 1.5rem;z-index: 10;}
+.hero p {font-size: 1.5rem;z-index: 10;}  */
 .btn {display: inline-block;margin-top: 20px;padding: 12px 24px;background: #916437b6;color: white;
   text-decoration: none;font-size: 1.2rem;z-index: 10;transition: 0.3s; border-radius: 45px;}
 .btn:hover {background: #8a6a47;}
@@ -23,6 +23,110 @@ h2 {color: #6b4f33;}
 #formPresenca input,
 #formPresenca select {width: 90%;padding: 12px;margin: 10px 0;border-radius: 6px;border: 1px solid #c7b8aa;font-size: 1.1rem;}
 #formPresenca button {width: 50%;}
+
+
+/* =========================
+   HERO
+========================= */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 85vh;                 /* desktop mais baixo */
+  background-image: url("img/moto.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: #fff;
+}
+
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.hero h1,
+.hero p,
+.hero .btn {
+  position: relative;
+  z-index: 2;
+}
+
+/* =========================
+   OVERLAY (escurece imagem)
+========================= */
+.hero .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45); /* ajuste a intensidade */
+  z-index: 1;
+}
+
+/* =========================
+   CONTEÚDO DO HERO
+========================= */
+.hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  margin-bottom: 10px;
+   font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.hero p {
+  font-size: 1.3rem;
+  margin-bottom: 25px;
+ font-family:Verdana, Geneva, Tahoma, sans-serif
+}
+
+.hero .btn {
+  padding: 12px 28px;
+  border-radius: 30px;
+  background: #9c7550;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+
+ /* hero mais alto no mobile */
+@media (max-width: 768px) {
+  .hero {
+    min-height: 30vh;             
+    background-position: center 15%;
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+    color: #ffffffe0;
+ font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+        color: #ffffffe0;
+      font-family:Verdana, Geneva, Tahoma, sans-serif
+  }
+}
+
+
+
+
+
+
+
+
 
 /* ===================== CARDS DE PRESENTES (MELHORADO) ===================== */
 /* =========================
@@ -306,6 +410,9 @@ grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
 ========================= */
 .info-cards {display: grid;grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));gap: 30px;}
 .info-card {background: #fff;padding: 30px;border-radius: 16px;box-shadow: 0 10px 25px rgba(0,0,0,0.08);}
+.convite{background-color: rgba(0, 250, 187, 0.116);}
+.convite2{background-color: rgba(50, 250, 0, 0.116);}
+.convite3{background-color: rgba(117, 0, 250, 0.116);}
 /* =========================
    LOCALIZAÇÃO / MAPA
 ========================= */
@@ -427,3 +534,21 @@ gap: 10px;max-width: 100%;padding: 0 10px;}
     opacity: 1;
   }
 }
+
+
+
+.modal-box.modal-alerta {
+  border-top: 4px solid #f5b301;
+}
+
+.modal-box.modal-erro {
+  border-top: 4px solid #e74c3c;
+}
+
+.modal-box.modal-sucesso {
+  border-top: 4px solid #c9a47c;
+}
+
+
+
+
