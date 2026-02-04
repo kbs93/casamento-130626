@@ -49,7 +49,7 @@ h2 {color: #6b4f33;}
 .hero .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(2, 1, 0, 0.171);
 }
 
 .hero h1,
@@ -65,7 +65,7 @@ h2 {color: #6b4f33;}
 .hero .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45); /* ajuste a intensidade */
+ 
   z-index: 1;
 }
 
@@ -94,27 +94,23 @@ h2 {color: #6b4f33;}
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.hero .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
-}
 
 
  /* hero mais alto no mobile */
 @media (max-width: 768px) {
   .hero {
-    min-height: 52vh;             
+    min-height: 53vh;             
     background-position: center top;
   }
 
   .hero h1 {
-    font-size: 1.6rem;
+    font-size: 1.9rem;
     color: #ffffff;
  font-family: 'Great Vibes', cursive;
   }
 
   .hero p {
-    font-size: 1.3rem;
+    font-size: 1.6rem;
         color: #ffffffe0;
  font-family: 'Great Vibes', cursive;
   }
@@ -336,7 +332,7 @@ grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
 .info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;           /* antes estava 40px (espaço exagerado) */
+  gap: 10px;           /* antes estava 40px (espaço exagerado) */
   margin-top: 0;
 }
 .info-bloco {
@@ -344,7 +340,7 @@ grid-template-columns: repeat(2, minmax(0, 1fr)); /* 🔥 chave da correção */
   margin-bottom: 30px; /* controla o espaço entre seções */
 }
 .info-bloco h2 {
-  margin: 16px 0 10px; /* remove espaço excessivo acima/abaixo */
+  margin: 16px 0 1px; /* remove espaço excessivo acima/abaixo */
 }
 
 /*---------------TEXTOS --------- */
@@ -493,67 +489,16 @@ gap: 10px;max-width: 100%;padding: 0 10px;}
 /* =========================
  MODAL CONFIRMAÇÃO PRESENÇA
 ========================= */
-.modal-confirmacao {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-}
-
-.modal-confirmacao.hidden {
-  display: none;
-}
-
-.modal-box {
-  background: #fff;
-  border-radius: 18px;
-  padding: 32px 24px;
-  max-width: 420px;
-  width: 90%;
-  text-align: center;
-  position: relative;
-  animation: modalPop 0.35s ease;
-}
-
-.modal-icon {
-  font-size: 40px;
-  margin-bottom: 12px;
-}
-
-.modal-box p {
-  font-size: 16px;
-  color: #5a3d1c;
-  line-height: 1.4;
-}
-
-.btn-modal {
-  margin-top: 20px;
-  padding: 12px 28px;
-  border-radius: 999px;
-  border: none;
-  background: #b69572;
-  color: #fff;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.btn-modal:hover {
-  opacity: 0.9;
-}
-
-.modal-close {
-  position: absolute;
-  top: 12px;
-  right: 14px;
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: #999;
-}
+.modal-confirmacao {position: fixed;inset: 0;background: rgba(0, 0, 0, 0.45);display: flex;align-items: center;
+justify-content: center;z-index: 9999;}
+.modal-confirmacao.hidden {display: none;}
+.modal-box {background: #fff;border-radius: 18px;padding: 32px 24px;max-width: 420px;width: 90%;
+text-align: center;position: relative;animation: modalPop 0.35s ease;}
+.modal-icon {font-size: 40px;margin-bottom: 12px;}
+.modal-box p {font-size: 16px;color: #5a3d1c;line-height: 1.4;}
+.btn-modal {margin-top: 20px;padding: 12px 28px;border-radius: 999px;border: none;background: #b69572;color: #fff;font-size: 15px;cursor: pointer;}
+.btn-modal:hover {opacity: 0.9;}
+.modal-close {position: absolute;top: 12px;right: 14px;background: none;border: none;font-size: 22px;cursor: pointer;color: #999;}
 
 @keyframes modalPop {
   from {
